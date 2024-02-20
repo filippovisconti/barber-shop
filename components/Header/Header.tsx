@@ -44,8 +44,12 @@ export function HeaderMegaMenu() {
                     </Group>
                     <Group visibleFrom="sm">
                         <ColorSchemeToggle />
-                        <Button variant="default">Log in</Button>
-                        <Button>Sign up</Button>
+                        <Button variant="default">
+                            <Link href="/login">Log in </Link>
+                        </Button>
+                        <Button>
+                            <Link href="/signup">Sign up</Link>
+                        </Button>
                     </Group>
 
                     <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />

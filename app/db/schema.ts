@@ -25,10 +25,20 @@ export const appointments = pgTable('appointments', {
     id: uuid('id').primaryKey().defaultRandom(),
     userId: uuid('user_id').notNull().references(() => users.id),
     serviceId: uuid('service_id').notNull().references(() => services.id),
+    locationId: uuid('location_id').notNull().references(() => locations.id),
     date: timestamp('date').notNull(),
     notes: text('notes'),
     createdAt: timestamp('created_at').notNull().defaultNow(),
     status: statusEnum('status')
+});
+
+export const locations = pgTable('locations', {
+    id: uuid('id').primaryKey().defaultRandom(),
+    name: text('name').notNull(),
+    address: text('address').notNull(),
+    city: text('city').notNull(),
+    openingAt: timestamp('opening_at').notNull(),
+    closingAt: timestamp('closing_at').notNull(),
 });
 
 export const userRelations = relations(users, ({ many }) => ({
@@ -47,7 +57,16 @@ export const appointmentRelations = relations(appointments, ({ one }) => ({
     service: one(services, {
         fields: [appointments.serviceId],
         references: [services.id],
+    }),
+    location: one(locations, {
+        fields: [appointments.locationId],
+        references: [locations.id],
     })
+
+}))
+
+export const locationRelations = relations(locations, ({ many }) => ({
+    appointment: many(appointments)
 }))
 
 export type User = typeof users.$inferSelect; // return type when queried

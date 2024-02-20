@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@mantine/core": "7.5.3",
+    "@mantine/form": "^7.5.3",
     "@mantine/hooks": "7.5.3",
     "@mantinex/mantine-logo": "^1.0.1",
     "@modulz/radix-icons": "^4.0.0",
