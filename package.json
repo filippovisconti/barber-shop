@@ -16,14 +16,22 @@
     "prettier:write": "prettier --write \"**/*.{ts,tsx}\"",
     "test": "npm run prettier:check && npm run lint && npm run typecheck && npm run jest",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build"
+    "storybook:build": "storybook build",
+    "generate": "drizzle-kit generate:pg --schema=./app/db/schema.ts",
+    "migrate-push": "node -r esbuild-register ./app/db/migrate.ts"
   },
   "dependencies": {
     "@mantine/core": "7.5.3",
     "@mantine/hooks": "7.5.3",
+    "@mantinex/mantine-logo": "^1.0.1",
+    "@modulz/radix-icons": "^4.0.0",
     "@next/bundle-analyzer": "^14.0.1",
     "@tabler/icons-react": "^2.40.0",
-    "next": "14.0.1",
+    "dotenv": "^16.4.4",
+    "drizzle-kit": "^0.20.14",
+    "drizzle-orm": "^0.29.3",
+    "next": "^14.1.0",
+    "postgres": "^3.4.3",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
