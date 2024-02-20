@@ -39,13 +39,9 @@ export function HeaderMegaMenu() {
             <header className={classes.header}>
                 <Group justify="space-between" h="100%">
                     <MantineLogo size={30} />
-
                     <Group h="100%" gap={0} visibleFrom="sm">
                         {links}
                     </Group>
-
-
-
                     <Group visibleFrom="sm">
                         <ColorSchemeToggle />
                         <Button variant="default">Log in</Button>
@@ -67,21 +63,7 @@ export function HeaderMegaMenu() {
             >
                 <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
                     <Divider my="sm" />
-
-                    <Link href="/" className={classes.link}>
-                        Home
-                    </Link>
-
-                    <Link href="/locations" className={classes.link}>
-                        Locations
-                    </Link>
-                    <Link href="/contact-us" className={classes.link}>
-                        Contact Us
-                    </Link>
-                    <Link href="/appointments/new" className={classes.link}>
-                        Schedule Appointment
-                    </Link>
-
+                    {links}
                     <Divider my="sm" />
 
                     <Group justify="center" grow pb="xl" px="md">
