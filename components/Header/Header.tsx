@@ -17,8 +17,6 @@ import {
     ScrollArea,
     rem,
     useMantineTheme,
-    useMantineColorScheme,
-    useComputedColorScheme,
 } from '@mantine/core';
 import Link from 'next/link';
 import { MantineLogo } from '@mantinex/mantine-logo';
@@ -33,6 +31,8 @@ import {
     IconChevronDown,
 } from '@tabler/icons-react';
 import classes from './Header.module.css';
+
+import { ColorSchemeToggle } from '@/components/ColorSchemeToggle/ColorSchemeToggle';
 
 const mockdata = [
     {
@@ -71,12 +71,6 @@ export function HeaderMegaMenu() {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
     const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
     const theme = useMantineTheme();
-    const {setColorScheme} = useMantineColorScheme();
-    const computedColorScheme = useComputedColorScheme('light');
-
-    const toggleColorScheme = () => {
-        setColorScheme(computedColorScheme === 'dark' ? 'light' : 'dark');
-    }
 
     const links = mockdata.map((item) => (
         <UnstyledButton className={classes.subLink} key={item.title}>
@@ -106,57 +100,19 @@ export function HeaderMegaMenu() {
                         <Link href="/" className={classes.link}>
                             Home
                         </Link>
-                        <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
-                            <HoverCard.Target>
-                                <a href="#" className={classes.link}>
-                                    <Center inline>
-                                        <Box component="span" mr={5}>
-                                            Services
-                                        </Box>
-                                        <IconChevronDown
-                                            style={{ width: rem(16), height: rem(16) }}
-                                            color={theme.colors.blue[6]}
-                                        />
-                                    </Center>
-                                </a>
-                            </HoverCard.Target>
 
-                            <HoverCard.Dropdown style={{ overflow: 'hidden' }}>
-                                <Group justify="space-between" px="md">
-                                    <Text fw={500}>Services</Text>
-                                    <Anchor href="#" fz="xs">
-                                        View all
-                                    </Anchor>
-                                </Group>
-
-                                <Divider my="sm" />
-
-                                <SimpleGrid cols={2} spacing={0}>
-                                    {links}
-                                </SimpleGrid>
-
-                                <div className={classes.dropdownFooter}>
-                                    <Group justify="space-between">
-                                        <div>
-                                            <Text fw={500} fz="sm">
-                                                Get started
-                                            </Text>
-                                            <Text size="xs" c="dimmed">
-                                                Their food sources have decreased, and their numbers
-                                            </Text>
-                                        </div>
-                                        <Button variant="default">Get started</Button>
-                                    </Group>
-                                </div>
-                            </HoverCard.Dropdown>
-                        </HoverCard>
-
+                        <Link href="#" className={classes.link}>
+                            Locations
+                        </Link>
                         <Link href="#" className={classes.link}>
                             Appointments
                         </Link>
                     </Group>
 
+
+
                     <Group visibleFrom="sm">
+                        <ColorSchemeToggle />
                         <Button variant="default">Log in</Button>
                         <Button>Sign up</Button>
                     </Group>
@@ -177,26 +133,15 @@ export function HeaderMegaMenu() {
                 <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
                     <Divider my="sm" />
 
-                    <a href="#" className={classes.link}>
+                    <Link href="/" className={classes.link}>
                         Home
-                    </a>
-                    <UnstyledButton className={classes.link} onClick={toggleLinks}>
-                        <Center inline>
-                            <Box component="span" mr={5}>
-                                Features
-                            </Box>
-                            <IconChevronDown
-                                style={{ width: rem(16), height: rem(16) }}
-                                color={theme.colors.blue[6]}
-                            />
-                        </Center>
-                    </UnstyledButton>
-                    <Collapse in={linksOpened}>{links}</Collapse>
+                    </Link>
+
                     <a href="#" className={classes.link}>
-                        Learn
+                        Locations
                     </a>
                     <a href="#" className={classes.link}>
-                        Academy
+                        Appointments
                     </a>
 
                     <Divider my="sm" />

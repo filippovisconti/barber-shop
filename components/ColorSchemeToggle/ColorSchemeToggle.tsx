@@ -10,25 +10,21 @@ export function ColorSchemeToggle() {
         keepTransitions: true,
     });
     const color = useComputedColorScheme('light');
+    const size = 18
 
     return (
-        <Group justify="center" mt="xl">
-            {/* <Button onClick={() => setColorScheme('light')}>Light</Button>
-            <Button onClick={() => setColorScheme('dark')}>Dark</Button>
-            <Button onClick={() => setColorScheme('auto')}>Auto</Button> */}
-            <ActionIcon
-                variant="outline"
-                color={color === 'dark' ? 'yellow' : 'blue'}
-                onClick={() => toggleColorScheme()}
-                title="Toggle color scheme"
-            >
-                {color === 'dark' ? (
-                    <SunIcon style={{ width: 18, height: 18 }} />
-                ) : (
-                    <MoonIcon style={{ width: 18, height: 18 }} />
-                )}
-            </ActionIcon>
-
-        </Group>
+        <ActionIcon
+            variant="outline"
+            color={color === 'dark' ? 'yellow' : 'blue'}
+            size="lg"
+            onClick={() => toggleColorScheme()}
+            title="Toggle color scheme"
+        >
+            {color === 'dark' ? (
+                <SunIcon style={{ width: size, height: size }} />
+            ) : (
+                <MoonIcon style={{ width: size, height: size }} />
+            )}
+        </ActionIcon>
     );
 }

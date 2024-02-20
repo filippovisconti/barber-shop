@@ -3,6 +3,7 @@ import React from 'react';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { theme } from '../theme';
 import { HeaderMegaMenu } from '@/components/Header/Header';
+import { FooterSocial } from '@/components/FooterSocial/FooterSocial';
 
 export const metadata = {
     title: 'Mantine Next.js template',
@@ -23,8 +24,10 @@ export default function RootLayout({ children }: { children: any }) {
             <body>
                 <MantineProvider theme={theme}>
                     <HeaderMegaMenu />
+
                     {children}
 
+                    <FooterSocial />
                 </MantineProvider>
             </body>
         </html>
