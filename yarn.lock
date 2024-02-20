@@ -4676,7 +4676,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.8.10":
+"@types/node@npm:*, @types/node@npm:^20.11.19":
   version: 20.11.19
   resolution: "@types/node@npm:20.11.19"
   dependencies:
@@ -4745,7 +4745,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:18.2.34, @types/react@npm:>=16":
+"@types/react@npm:*, @types/react@npm:>=16":
   version: 18.2.34
   resolution: "@types/react@npm:18.2.34"
   dependencies:
@@ -4753,6 +4753,17 @@ __metadata:
     "@types/scheduler": "npm:*"
     csstype: "npm:^3.0.2"
   checksum: 42a357e3ec8943fe433f647e60e1506ec7657e12a72847ca801f97a128778dff6011e57ae2eb53f6363cf4515cab60f6a47eca2f916bab27a85bd88c94ab72d3
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18.2.57":
+  version: 18.2.57
+  resolution: "@types/react@npm:18.2.57"
+  dependencies:
+    "@types/prop-types": "npm:*"
+    "@types/scheduler": "npm:*"
+    csstype: "npm:^3.0.2"
+  checksum: d5ed2f04c069c591e41ef1bea5b70f89dc7a4edff2254c4df801ddaa21b43b2aa70c106c049b9b6736f98f5afe66576d0e75a9e47c7044f2660b1744ff64f535
   languageName: node
   linkType: hard
 
@@ -11740,8 +11751,8 @@ __metadata:
     "@testing-library/react": "npm:^14.0.0"
     "@testing-library/user-event": "npm:^14.5.1"
     "@types/jest": "npm:^29.5.7"
-    "@types/node": "npm:^20.8.10"
-    "@types/react": "npm:18.2.34"
+    "@types/node": "npm:^20.11.19"
+    "@types/react": "npm:^18.2.57"
     "@typescript-eslint/eslint-plugin": "npm:^6.9.1"
     "@typescript-eslint/parser": "npm:^6.9.1"
     babel-loader: "npm:^9.1.3"
@@ -11761,6 +11772,7 @@ __metadata:
     eslint-plugin-testing-library: "npm:^6.1.0"
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
+    net: "npm:^1.0.2"
     next: "npm:^14.1.0"
     postcss: "npm:^8.4.31"
     postcss-preset-mantine: "npm:1.13.0"
@@ -11773,6 +11785,7 @@ __metadata:
     storybook-dark-mode: "npm:^3.0.1"
     stylelint: "npm:^15.11.0"
     stylelint-config-standard-scss: "npm:^11.1.0"
+    tls: "npm:^0.0.1"
     ts-jest: "npm:^29.1.1"
     typescript: "npm:5.2.2"
   languageName: unknown
@@ -12263,6 +12276,13 @@ __metadata:
   version: 2.6.2
   resolution: "neo-async@npm:2.6.2"
   checksum: c2f5a604a54a8ec5438a342e1f356dff4bc33ccccdb6dc668d94fe8e5eccfc9d2c2eea6064b0967a767ba63b33763f51ccf2cd2441b461a7322656c1f06b3f5d
+  languageName: node
+  linkType: hard
+
+"net@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "net@npm:1.0.2"
+  checksum: 7cf9cf8f9c9a2bdadd9002e85da7bd509216ed84b76315aa903a51f15997e4844e7cb8c742f8af434d8cf431564c868d8565106004bbd9ce4223696c9b13d2fd
   languageName: node
   linkType: hard
 
@@ -15642,6 +15662,13 @@ __metadata:
   version: 1.3.1
   resolution: "tiny-invariant@npm:1.3.1"
   checksum: 5b87c1d52847d9452b60d0dcb77011b459044e0361ca8253bfe7b43d6288106e12af926adb709a6fc28900e3864349b91dad9a4ac93c39aa15f360b26c2ff4db
+  languageName: node
+  linkType: hard
+
+"tls@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "tls@npm:0.0.1"
+  checksum: 6bddc0ecb90c84e80b90e14b08be87aabe19adc90a357c98a41eb3af31072eda948da7556acca9697ecd1094291c78637be9a08d3bc73161b89266ed0d1a944d
   languageName: node
   linkType: hard
 

@@ -1,5 +1,12 @@
+'use client';
+import LoginForm from '@/components/LoginForm/LoginForm';
+import { Container } from '@mantine/core';
 import React from 'react';
 
-const page = () => <div>page</div>;
-
-export default page;
+export default function Page() {
+    return (
+        <main><Container>
+            <LoginForm />
+        </Container></main>
+    );
+}

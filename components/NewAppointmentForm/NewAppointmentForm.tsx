@@ -1,3 +1,4 @@
+
 'use client';
 import {
     Box,
@@ -8,7 +9,7 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
-export default function LoginForm() {
+export default function NewAppointmentForm() {
 
     const form = useForm({
         initialValues: { name: '', email: '' },
@@ -23,7 +24,7 @@ export default function LoginForm() {
     return (
         <Box maw={340} mx="auto">
             <Title py="20" order={1}>
-                Login here
+                Sign up here
             </Title>
 
             <form onSubmit={form.onSubmit(console.log)}>

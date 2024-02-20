@@ -4,7 +4,6 @@ import postgres from 'postgres';
 import * as schema from './schema';
 
 dotenv.config();
-
 if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL environment variable is required.');
 
 if (!process.env.DATABASE_PORT) throw new Error('DATABASE_PORT environment variable is required.');
