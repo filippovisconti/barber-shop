@@ -31,8 +31,9 @@ export function LeadGrid() {
                             </Group>
 
                             <Text size="sm" c="dimmed">
-                                Relax and rejuvenate with our luxurious hot towel shave service. Experience the
-                                timeless art of grooming as our skilled barbers deliver a smooth and precise shave,
+                                Relax and rejuvenate with our luxurious hot towel shave service.
+                                Experience the timeless art of grooming as our skilled barbers
+                                deliver a smooth and precise shave,
                                 leaving your skin feeling refreshed and revitalized.
                             </Text>
 

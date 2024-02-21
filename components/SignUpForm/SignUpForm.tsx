@@ -65,8 +65,8 @@ export default function SignUpForm() {
 
     // functions will be used to validate values at corresponding key
     validate: {
-      name: (value: string) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
-      email: (value: string) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+      name: (val: string) => (val.length < 2 ? 'Name must have at least 2 letters' : null),
+      email: (val: string) => (/^\S+@\S+$/.test(val) ? null : 'Invalid email'),
     },
   });
 

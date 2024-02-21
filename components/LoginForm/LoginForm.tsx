@@ -1,4 +1,5 @@
 'use client';
+
 import {
     Box,
     Button,
@@ -9,7 +10,6 @@ import {
 import { useForm } from '@mantine/form';
 
 export default function LoginForm() {
-
     const form = useForm({
         initialValues: { name: '', email: '' },
 

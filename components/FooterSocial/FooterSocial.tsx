@@ -7,7 +7,7 @@ import classes from './FooterSocial.module.css';
 
 export function FooterSocial() {
   return (
-    <div className={classes.footer}>
+    <footer className={classes.footer}>
       <Container className={classes.inner}>
         <MantineLogo size={28} />
         <Group gap={0} className={classes.links} justify="flex-end" wrap="nowrap">
@@ -22,6 +22,6 @@ export function FooterSocial() {
           </ActionIcon>
         </Group>
       </Container>
-    </div>
+    </footer>
   );
 }

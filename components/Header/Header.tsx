@@ -12,35 +12,35 @@ export function HeaderMegaMenu() {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
 
     const links = [
-        <Link key='1' href="/" className={classes.link}>
+        <Link key="1" href="/" className={classes.link}>
             Home
         </Link>,
-        <Link key='2' href="/locations" className={classes.link}>
+        <Link key="2" href="/locations" className={classes.link}>
             Locations
         </Link>,
-        <Link key='3' href="/contact-us" className={classes.link}>
+        <Link key="3" href="/contact-us" className={classes.link}>
             Contact Us
         </Link>,
-        <Link key='7' href="/services" className={classes.link}>
+        <Link key="7" href="/services" className={classes.link}>
             Services
         </Link>,
-        <Link key='4' href="/appointments/new" className={classes.link}>
+        <Link key="4" href="/appointments/new" className={classes.link}>
             Schedule Appointment
         </Link>,
     ];
 
     const login_signup = [
-        (<Link key='5' href="/login">
+        (<Link key="5" href="/login">
             <Button variant="default">
                 Log in
             </Button>
-        </Link>),
-        (<Link key='6' href="/signup">
+         </Link>),
+        (<Link key="6" href="/signup">
             <Button>
                 Sign up
             </Button>
-        </Link>)
-    ]
+         </Link>),
+    ];
 
     return (
         <Box pb={120}>
@@ -59,13 +59,13 @@ export function HeaderMegaMenu() {
             </header>
 
             <Drawer
-                opened={drawerOpened}
-                onClose={closeDrawer}
-                size="100%"
-                padding="md"
-                title="Navigation"
-                hiddenFrom="sm"
-                zIndex={1000000}
+              opened={drawerOpened}
+              onClose={closeDrawer}
+              size="100%"
+              padding="md"
+              title="Navigation"
+              hiddenFrom="sm"
+              zIndex={1000000}
             >
                 <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
                     <Divider my="sm" />
