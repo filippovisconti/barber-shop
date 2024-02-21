@@ -38,6 +38,15 @@ export const services = pgTable('services', {
     duration: integer('duration').notNull().default(30),
 });
 
+export const locations = pgTable('locations', {
+    id: uuid('id').primaryKey().defaultRandom(),
+    name: text('name').notNull(),
+    address: text('address').notNull(),
+    city: text('city').notNull(),
+    openingAt: timestamp('opening_at').notNull(),
+    closingAt: timestamp('closing_at').notNull(),
+});
+
 export const appointments = pgTable('appointments', {
     id: uuid('id').primaryKey().defaultRandom(),
     userId: uuid('user_id')
@@ -53,15 +62,6 @@ export const appointments = pgTable('appointments', {
     notes: text('notes'),
     createdAt: timestamp('created_at').notNull().defaultNow(),
     status: statusEnum('status'),
-});
-
-export const locations = pgTable('locations', {
-    id: uuid('id').primaryKey().defaultRandom(),
-    name: text('name').notNull(),
-    address: text('address').notNull(),
-    city: text('city').notNull(),
-    openingAt: timestamp('opening_at').notNull(),
-    closingAt: timestamp('closing_at').notNull(),
 });
 
 export const userRelations = relations(users, ({ many }) => ({

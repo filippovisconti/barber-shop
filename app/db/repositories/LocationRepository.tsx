@@ -1,5 +1,5 @@
 import { eq } from 'drizzle-orm';
-import { NewLocation, Location, locations } from '../schema';
+import { Location, NewLocation, locations } from '../schema';
 
 import { db } from '../db';
 
