@@ -1,14 +1,13 @@
-import { Container } from '@mantine/core';
-import React from 'react';
+import { ContactUs } from '@/components/ContactUs/ContactUs';
+import { Center, Container, Title } from '@mantine/core';
 
 const page = () => (
     <main>
-      <Container>
-        Have questions or need assistance? Feel free to reach out to us. Visit our shop at
-        [Address], give us a call at [Phone Number], or send us an email at [Email Address]. We look
-        forward to serving you at [Barber Shop Name].
-      </Container>
+
+        <Container p='20'>
+            <ContactUs/>
+        </Container>
     </main>
-  );
+);
 
 export default page;

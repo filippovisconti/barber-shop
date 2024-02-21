@@ -1,7 +1,7 @@
 'use client';
 
-import SignUpForm from '@/components/SignUpForm/SignUpForm';
 import { Container } from '@mantine/core';
+import SignUpForm from '@/components/SignUpForm/SignUpForm';
 
 const page = () => (
         <main>
