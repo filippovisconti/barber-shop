@@ -1,11 +1,11 @@
 import LocationCards from '@/components/LocationCards/LocationCards';
 import { Center, Container, Title } from '@mantine/core';
-import LocationRepository from '../db/repositories/LocationRepository';
 import { Location } from '../db/schema';
 
 async function getData() {
-    const res = LocationRepository.getAll();
-    return res;
+    if (!process.env.BASE_URL) throw new Error('BASE_URL environment variable is required.');
+    const res = await fetch(`${process.env.BASE_URL}/api/locations`, { cache: "no-store" });
+    return res.json();
 }
 export default async function Page() {
     const data = await getData();
