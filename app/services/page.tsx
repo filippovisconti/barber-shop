@@ -1,13 +1,13 @@
-import { Box, Center, Container, Group, Space, Title } from '@mantine/core';
-import ServiceRepository from '../db/repositories/ServiceRepository';
-import { Service } from '../db/schema';
-import ServiceTable from '@/components/ServiceTable/ServiceTable';
 import { EmailBanner } from '@/components/EmailBanner/EmailBanner';
 import { ImageActionBanner } from '@/components/ImageActionBanner/ImageActionBanner';
+import ServiceTable from '@/components/ServiceTable/ServiceTable';
+import { Box, Container, Group, Space, Title } from '@mantine/core';
+import { Service } from '../db/schema';
 
 async function getData() {
-    const res = ServiceRepository.getAll();
-    return res;
+    if (!process.env.BASE_URL) throw new Error('BASE_URL environment variable is required.');
+    const res = await fetch(`${process.env.BASE_URL}/api/services`, { cache: "no-store" });
+    return res.json();
 }
 
 export default async function Page() {
@@ -15,7 +15,7 @@ export default async function Page() {
     const service_names: Service[] = JSON.parse(JSON.stringify(data)) as Service[];
     const table_and_banner = (
         <>
-            <Box miw={{base:200, sm: 500, md: 600}} py="20" mx="auto">
+            <Box miw={{ base: 200, sm: 500, md: 600 }} py="20">
                 <ServiceTable service_names={service_names} />
             </Box>
             <Box maw={300} mx="auto">

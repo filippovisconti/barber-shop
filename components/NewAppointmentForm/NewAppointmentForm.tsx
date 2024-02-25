@@ -3,6 +3,9 @@ import {
     ActionIcon,
     Box,
     Button,
+    Center,
+    Group,
+    Image,
     Select,
     TextInput,
     Title,
@@ -37,38 +40,63 @@ export default function NewAppointmentForm() {
             <IconClock style={{ width: rem(16), height: rem(16) }} stroke={1.5} />
         </ActionIcon>
     );
+    const form_items = (
+        <>
+            <Box p='10'>
+                <Title py="20" order={3}>
+                    Service details
+                </Title>
+                <Select py='10' label="Location" placeholder="Select a location" data={locations} {...form.getInputProps('location')} />
+                <Select py='10' label="Service" placeholder="Choose one service" data={services} {...form.getInputProps('service')} />
+
+                <DatePickerInput py='10' label="Pick a date"  {...form.getInputProps('date')} />
+
+                <TimeInput py='10' label="Pick a time" placeholder="Pick time" ref={ref} rightSection={pickerControl}  {...form.getInputProps('time')} />
+            </Box>
+            <Box p='10'>
+                <Center>
+                    <Image
+                        src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-9.png"
+                        fallbackSrc="https://placehold.co/600x400?text=Placeholder"
+                        h={150}
+                        w="auto"
+                        fit="contain" radius="md"
+                        alt="Customer"
+                    />
+                </Center>
+                <Title py="20" order={3}>
+                    Customer details
+                </Title>
+
+                <TextInput py='10' withAsterisk label="Name" placeholder="Name" {...form.getInputProps('name')} />
+                <TextInput
+                    withAsterisk
+                    mt="sm"
+                    label="Email"
+                    placeholder="Email" py='10'
+                    {...form.getInputProps('email')}
+                />
+
+            </Box>
+        </>);
     return (
         <>
             <Title py="20" order={1}>
                 Schedule a new appointment
             </Title>
-            <Box maw={340} mx="auto">
+            <Box maw={840} mx="auto">
 
                 <form onSubmit={form.onSubmit(console.log)}>
-                    <Title py="20" order={3}>
-                        Service details
-                    </Title>
-                    <Select label="Service" placeholder="Choose one service" data={services} {...form.getInputProps('service')} />
 
-                    <DatePickerInput   label="Pick a date"  {...form.getInputProps('date')} />
+                    <Group grow visibleFrom='sm'>
+                        {form_items}                    </Group>
+                    <Box hiddenFrom='sm'>{form_items}</Box>
+                    <Center>
 
-                    <TimeInput label="Pick a time" placeholder="Pick time" ref={ref} rightSection={pickerControl}  {...form.getInputProps('time')} />
-                    <Select label="Location" placeholder="Select a location" data={locations} {...form.getInputProps('location')} />
-
-                    <Title py="20" order={3}>
-                        Customer details            </Title>
-                    <TextInput withAsterisk label="Name" placeholder="Name" {...form.getInputProps('name')} />
-                    <TextInput
-                        withAsterisk
-                        mt="sm"
-                        label="Email"
-                        placeholder="Email"
-                        {...form.getInputProps('email')}
-                    />
-
-                    <Button type="submit" mt="sm">
-                        Submit
-                    </Button>
+                        <Button type="submit" mt="xl">
+                            Submit
+                        </Button>
+                    </Center>
                 </form>
             </Box>
         </>

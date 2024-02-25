@@ -53,7 +53,7 @@ export function ActionsGrid() {
     <Card withBorder radius="md" className={classes.card}>
       <Group justify="space-between">
         <Text className={classes.title}>Services</Text>
-        <Anchor size="xs" c="dimmed" style={{ lineHeight: 1 }}>
+        <Anchor size="xs" c="dimmed" style={{ lineHeight: 1 }} href="/services">
           + 21 other services
         </Anchor>
       </Group>
