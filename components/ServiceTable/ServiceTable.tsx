@@ -1,8 +1,8 @@
 'use client';
 
-import { Service } from '@/app/db/schema';
 import { Box, Table, Text } from '@mantine/core';
 import Link from 'next/link';
+import { Service } from '@/app/db/schema';
 
 export default function ServiceTable(props: { service_names: Service[] }) {
     const rows = props.service_names.map((element: Service) => (
@@ -11,7 +11,8 @@ export default function ServiceTable(props: { service_names: Service[] }) {
                 <Link href={`/services/${element.id}`}>
                     {element.name}
                 </Link>
-            </Text></Table.Td>
+                      </Text>
+            </Table.Td>
             <Table.Td>{element.description}</Table.Td>
             <Table.Td>{element.price} €</Table.Td>
             <Table.Td>{element.duration}' </Table.Td>
@@ -19,7 +20,7 @@ export default function ServiceTable(props: { service_names: Service[] }) {
     ));
 
     const service_table = (
-        <Box py='40' px='5'>
+        <Box py="40" px="5">
             <Table striped highlightOnHover>
                 <Table.Thead>
                     <Table.Tr>

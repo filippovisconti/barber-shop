@@ -1,5 +1,5 @@
 import attributes from './attributes.json';
-import { StoryWrapper } from '../../components/StoryWrapper/StoryWrapper';
+import { StoryWrapper } from '../StoryWrapper/StoryWrapper';
 import { GetInTouch } from './GetInTouch';
 
 export default { title: 'GetInTouch' };

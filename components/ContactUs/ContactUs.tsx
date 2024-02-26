@@ -1,14 +1,14 @@
 import {
-  Text,
-  Title,
-  SimpleGrid,
-  TextInput,
-  Textarea,
+  ActionIcon,
   Button,
   Group,
-  ActionIcon,
+  SimpleGrid,
+  Text,
+  TextInput,
+  Textarea,
+  Title,
 } from '@mantine/core';
-import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
+import { IconBrandInstagram, IconBrandTwitter, IconBrandYoutube } from '@tabler/icons-react';
 import { ContactIconsList } from './ContactIcons';
 import classes from './ContactUs.module.css';
 
@@ -27,7 +27,8 @@ export function ContactUs() {
         <div>
           <Title className={classes.title}>Reach out</Title>
           <Text className={classes.description} mt="sm" mb={30}>
-            Leave your email and we will get back to you as soon as possible, or call us right away! </Text>
+            Leave your email and we will get back to you as soon as possible, or call us right away!
+          </Text>
 
           <ContactIconsList />
 

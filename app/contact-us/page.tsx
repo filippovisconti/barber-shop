@@ -1,11 +1,12 @@
 'use client';
-import { GetInTouch } from '@/components/GetInTouch/GetInTouch';
+
 import { Center, Container, Title } from '@mantine/core';
+import { GetInTouch } from '@/components/GetInTouch/GetInTouch';
 
 const page = () => (
     <main>
 
-        <Container p='20'>
+        <Container p="20">
             <Center>
 
                 <Title pb="20" order={1}>
@@ -13,7 +14,7 @@ const page = () => (
                 </Title>
 
             </Center>
-            <GetInTouch/>
+            <GetInTouch />
         </Container>
     </main>
 );

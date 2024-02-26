@@ -1,5 +1,5 @@
 import attributes from './attributes.json';
-import { StoryWrapper } from '../../components/StoryWrapper/StoryWrapper';
+import { StoryWrapper } from '../StoryWrapper/StoryWrapper';
 import { EmailBanner } from './EmailBanner';
 
 export default { title: 'EmailBanner' };
