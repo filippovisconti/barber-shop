@@ -35,23 +35,27 @@ export default async function NewAppointmentForm() {
     const locations = parsedLocations.map((location) => location.name);
     const services = parsedServices.map((service) => service.name);
 
-
-    const handleSubmit = async (values: FormValues, event) => {
+    const createAppointment = async (formData: FormData) => {
         "use server";
-        event.preventDefault();
+
+        const name = formData.get("name");
+        const email = formData.get("email");
+
+        console.log('my form ' + formData);
+        // Validate the form data and save it to the database
+
+        console.log({ name, email });
         if (!process.env.BASE_URL) throw new Error('BASE_URL environment variable is required.');
         const url: URL = new URL(`/api/appointments/new`, process.env.BASE_URL);
-
         const response = await fetch(url, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(values),
+
+            body: formData,
         });
 
         const data = await response.json();
-        console.log(data);
+        console.log('data' + data);
+
     };
 
     return (
@@ -60,7 +64,7 @@ export default async function NewAppointmentForm() {
                 Schedule a new appointment
             </Title>
             <Box maw={840} mx="auto">
-                <WholeForm handleSubmit={handleSubmit} locations={locations} services={services} />
+                <WholeForm action={createAppointment} locations={locations} services={services} />
             </Box>
         </>
     );

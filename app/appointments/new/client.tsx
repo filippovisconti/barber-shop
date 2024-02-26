@@ -1,17 +1,18 @@
 "use client";
-import { FormValues } from '@/components/NewAppointmentForm/NewAppointmentForm';
 import { ActionIcon, Box, Button, Center, Group, Image, Select, TextInput, Title, rem } from '@mantine/core';
 import { DatePickerInput, TimeInput } from '@mantine/dates';
 import { useForm } from '@mantine/form';
 import { IconClock } from '@tabler/icons-react';
 import { useRef } from 'react';
 
-export default function WholeForm(props: { handleSubmit: (values: FormValues, event: any) => void, locations: string[], services: string[] }) {
+export default function WholeForm(props: {
+    action: (values: FormData) => void,
+    locations: string[], services: string[]
+}) {
     const form = useForm({
         name: 'new-appointment-form',
-        initialValues: { name: '', email: '', service: '', location: '', date: '', time: '' },
+        initialValues: { name: 'pippo', email: 'a@b.com', service: 'Haircut', location: 'Barber Street', date: '', time: '' },
 
-        // functions will be used to validate values at corresponding key
         validate: {
             name: (value: string) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
             email: (value: string) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
@@ -33,12 +34,12 @@ export default function WholeForm(props: { handleSubmit: (values: FormValues, ev
                 <Title py="20" order={3}>
                     Service details
                 </Title>
-                <Select py="10" label="Location" placeholder="Select a location" data={props.locations} {...form.getInputProps('location')} />
-                <Select py="10" label="Service" placeholder="Choose one service" data={props.services} {...form.getInputProps('service')} />
+                <Select py="10" name="location" label="Location" placeholder="Select a location" data={props.locations} {...form.getInputProps('location')} />
+                <Select py="10" name="service" label="Service" placeholder="Choose one service" data={props.services} {...form.getInputProps('service')} />
 
-                <DatePickerInput py="10" label="Pick a date" {...form.getInputProps('date')} />
+                <DatePickerInput name='date' py="10" label="Pick a date" {...form.getInputProps('date')} />
 
-                <TimeInput py="10" label="Pick a time" placeholder="Pick time" ref={ref} rightSection={pickerControl} {...form.getInputProps('time')} />
+                <TimeInput name='time' py="10" label="Pick a time" placeholder="Pick time" ref={ref} rightSection={pickerControl} {...form.getInputProps('time')} />
             </Box>
             <Box p="10">
                 <Center>
@@ -56,20 +57,21 @@ export default function WholeForm(props: { handleSubmit: (values: FormValues, ev
                     Customer details
                 </Title>
 
-                <TextInput py="10" withAsterisk label="Name" placeholder="Name" {...form.getInputProps('name')} />
+                <TextInput py="10" withAsterisk name='name' label="Name" placeholder="Name" {...form.getInputProps('name')} />
                 <TextInput
                     withAsterisk
                     mt="sm"
                     label="Email"
                     placeholder="Email"
                     py="10"
+                    name='email'
                     {...form.getInputProps('email')}
                 />
             </Box>
         </>
     )
     return (
-        <form onSubmit={form.onSubmit((values, events) => { props.handleSubmit(values, events) })}>
+        <form action={props.action}>
 
             <Group grow visibleFrom="sm">
                 {form_items}
