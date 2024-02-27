@@ -1,4 +1,5 @@
-"use client";
+'use client';
+
 import { ActionIcon, Box, Button, Center, Group, Image, Select, TextInput, Title, rem } from '@mantine/core';
 import { DatePickerInput, TimeInput } from '@mantine/dates';
 import { useForm } from '@mantine/form';
@@ -37,39 +38,39 @@ export default function WholeForm(props: {
                 <Select py="10" name="location" label="Location" placeholder="Select a location" data={props.locations} {...form.getInputProps('location')} />
                 <Select py="10" name="service" label="Service" placeholder="Choose one service" data={props.services} {...form.getInputProps('service')} />
 
-                <DatePickerInput name='date' py="10" label="Pick a date" {...form.getInputProps('date')} />
+                <DatePickerInput name="date" py="10" label="Pick a date" {...form.getInputProps('date')} />
 
-                <TimeInput name='time' py="10" label="Pick a time" placeholder="Pick time" ref={ref} rightSection={pickerControl} {...form.getInputProps('time')} />
+                <TimeInput name="time" py="10" label="Pick a time" placeholder="Pick time" ref={ref} rightSection={pickerControl} {...form.getInputProps('time')} />
             </Box>
             <Box p="10">
                 <Center>
                     <Image
-                        src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-9.png"
-                        fallbackSrc="https://placehold.co/600x400?text=Placeholder"
-                        h={150}
-                        w="auto"
-                        fit="contain"
-                        radius="md"
-                        alt="Customer"
+                      src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-9.png"
+                      fallbackSrc="https://placehold.co/600x400?text=Placeholder"
+                      h={150}
+                      w="auto"
+                      fit="contain"
+                      radius="md"
+                      alt="Customer"
                     />
                 </Center>
                 <Title py="20" order={3}>
                     Customer details
                 </Title>
 
-                <TextInput py="10" withAsterisk name='name' label="Name" placeholder="Name" {...form.getInputProps('name')} />
+                <TextInput py="10" withAsterisk name="name" label="Name" placeholder="Name" {...form.getInputProps('name')} />
                 <TextInput
-                    withAsterisk
-                    mt="sm"
-                    label="Email"
-                    placeholder="Email"
-                    py="10"
-                    name='email'
-                    {...form.getInputProps('email')}
+                  withAsterisk
+                  mt="sm"
+                  label="Email"
+                  placeholder="Email"
+                  py="10"
+                  name="email"
+                  {...form.getInputProps('email')}
                 />
             </Box>
         </>
-    )
+    );
     return (
         <form action={props.action}>
 
@@ -84,5 +85,5 @@ export default function WholeForm(props: {
                 </Button>
             </Center>
         </form>
-    )
+    );
 }

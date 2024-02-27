@@ -1,10 +1,10 @@
 // server component
-import WholeForm from '@/app/appointments/new/client';
-import { Location, Service } from '@/app/db/schema';
 import {
     Box,
-    Title
+    Title,
 } from '@mantine/core';
+import WholeForm from '@/app/appointments/new/client';
+import { Location, Service } from '@/app/db/schema';
 
 export interface FormValues {
     name: string;
@@ -36,17 +36,17 @@ export default async function NewAppointmentForm() {
     const services = parsedServices.map((service) => service.name);
 
     const createAppointment = async (formData: FormData) => {
-        "use server";
+        'use server';
 
-        const name = formData.get("name");
-        const email = formData.get("email");
+        const name = formData.get('name');
+        const email = formData.get('email');
 
-        console.log('my form ' + formData);
+        console.log(`my form ${formData}`);
         // Validate the form data and save it to the database
 
         console.log({ name, email });
         if (!process.env.BASE_URL) throw new Error('BASE_URL environment variable is required.');
-        const url: URL = new URL(`/api/appointments/new`, process.env.BASE_URL);
+        const url: URL = new URL('/api/appointments/new', process.env.BASE_URL);
         const response = await fetch(url, {
             method: 'POST',
 
@@ -54,8 +54,7 @@ export default async function NewAppointmentForm() {
         });
 
         const data = await response.json();
-        console.log('data' + data);
-
+        console.log(`data${data}`);
     };
 
     return (

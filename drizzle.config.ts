@@ -7,11 +7,9 @@ if (!process.env.DATABASE_PORT) throw new Error('DATABASE_PORT environment varia
 
 if (!process.env.DATABASE_USER) throw new Error('DATABASE_USER environment variable is required.');
 
-if (!process.env.DATABASE_PASSWORD)
-  throw new Error('DATABASE_PASSWORD environment variable is required.');
+if (!process.env.DATABASE_PASSWORD) throw new Error('DATABASE_PASSWORD environment variable is required.');
 
-if (!process.env.DATABASE_DBNAME)
-  throw new Error('DATABASE_DBNAME environment variable is required.');
+if (!process.env.DATABASE_DBNAME) throw new Error('DATABASE_DBNAME environment variable is required.');
 
 export default {
   schema: './app/db/schema.ts',
