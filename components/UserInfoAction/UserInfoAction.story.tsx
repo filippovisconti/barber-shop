@@ -5,5 +5,5 @@ import { UserInfoAction } from './UserInfoAction';
 export default { title: 'UserInfoAction' };
 
 export function Usage() {
-  return <StoryWrapper attributes={attributes} component={UserInfoAction} />;
+	return <StoryWrapper attributes={attributes} component={UserInfoAction} />;
 }

@@ -5,5 +5,5 @@ import { EmailBanner } from './EmailBanner';
 export default { title: 'EmailBanner' };
 
 export function Usage() {
-  return <StoryWrapper attributes={attributes} component={EmailBanner} />;
+	return <StoryWrapper attributes={attributes} component={EmailBanner} />;
 }

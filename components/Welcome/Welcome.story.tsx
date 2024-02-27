@@ -1,7 +1,7 @@
 import { Welcome } from './Welcome';
 
 export default {
-  title: 'Welcome',
+	title: 'Welcome',
 };
 
 export const Usage = () => <Welcome />;
