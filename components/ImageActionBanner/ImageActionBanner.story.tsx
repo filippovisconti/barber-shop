@@ -5,5 +5,5 @@ import { ImageActionBanner } from './ImageActionBanner';
 export default { title: 'ImageActionBanner' };
 
 export function Usage() {
-	return <StoryWrapper attributes={attributes} component={ImageActionBanner} />;
+    return <StoryWrapper attributes={attributes} component={ImageActionBanner} />;
 }

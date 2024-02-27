@@ -11,17 +11,17 @@ if (!process.env.DATABASE_PORT) throw new Error('DATABASE_PORT environment varia
 if (!process.env.DATABASE_USER) throw new Error('DATABASE_USER environment variable is required.');
 
 if (!process.env.DATABASE_PASSWORD)
-	throw new Error('DATABASE_PASSWORD environment variable is required.');
+    throw new Error('DATABASE_PASSWORD environment variable is required.');
 
 if (!process.env.DATABASE_DBNAME)
-	throw new Error('DATABASE_DBNAME environment variable is required.');
+    throw new Error('DATABASE_DBNAME environment variable is required.');
 
 const dbCredentials: { [key: string]: string } = {
-	host: process.env.DATABASE_URL,
-	port: process.env.DATABASE_PORT,
-	user: process.env.DATABASE_USER,
-	password: process.env.DATABASE_PASSWORD,
-	database: process.env.DATABASE_DBNAME,
+    host: process.env.DATABASE_URL,
+    port: process.env.DATABASE_PORT,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_DBNAME,
 };
 
 const connection_string: string = `postgres://${dbCredentials.user}:${dbCredentials.password}@${dbCredentials.host}:${dbCredentials.port}/${dbCredentials.database}`;

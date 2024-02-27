@@ -5,5 +5,5 @@ import { AuthenticationForm } from './AuthenticationForm';
 export default { title: 'AuthenticationForm' };
 
 export function Usage() {
-	return <StoryWrapper attributes={attributes} component={AuthenticationForm} />;
+    return <StoryWrapper attributes={attributes} component={AuthenticationForm} />;
 }

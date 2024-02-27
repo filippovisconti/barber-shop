@@ -5,5 +5,5 @@ import { ContactUs } from './ContactUs';
 export default { title: 'ContactUs' };
 
 export function Usage() {
-	return <StoryWrapper attributes={attributes} component={ContactUs} />;
+    return <StoryWrapper attributes={attributes} component={ContactUs} />;
 }
