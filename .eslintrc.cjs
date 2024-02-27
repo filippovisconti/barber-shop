@@ -1,5 +1,5 @@
 module.exports = {
-    extends: ['mantine', 'plugin:@next/next/recommended', 'plugin:jest/recommended'],
+    extends: ['mantine', 'plugin:@next/next/recommended', 'plugin:jest/recommended', "plugin:react-hooks/recommended"],
     plugins: ['testing-library', 'jest', '@typescript-eslint', 'prettier'],
     overrides: [
         {

@@ -16,7 +16,12 @@ export async function POST(request: NextRequest) {
     const date = new Date(raw_date);
 
     const appointment: NewAppointment = { serviceId: service, locationId: location, date: new Date(date), userId: name };
-    await AppointmentRepository.insert(appointment);
-
+    try {
+        await AppointmentRepository.insert(appointment);
+    } catch (error) {
+        console.error('error creating appointment', error);
+        return Response.json('error creating appointment');
+    }
+    console.log('appointment created');
     return Response.json('appointment created');
 }
