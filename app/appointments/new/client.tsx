@@ -10,6 +10,7 @@ import {
     Image,
     Select,
     TextInput,
+    Textarea,
     Title,
     rem,
 } from '@mantine/core';
@@ -29,16 +30,20 @@ export default function WholeForm(props: {
     const searchParams = useSearchParams();
     const chosen_service: string | null = searchParams.get('uuid');
 
-    const timestamp : Date= new Date();
+    const timestamp: Date = new Date();
+    timestamp.setHours(0, 0, 0, 0);
+    timestamp.setDate(timestamp.getDate() + 1);
+
     const form = useForm({
         name: 'new-appointment-form',
         initialValues: {
-            name: (session) ? session.user?.name ?? 'ERROR NAME' : 'Jon Doe',
-            email: (session) ? session.user?.email ?? 'ERROR EMAIL' : 'jon@me.com',
-            service: (chosen_service) ?? 'Haircut',
+            name: session ? session.user?.name ?? 'ERROR NAME' : 'Jon Doe',
+            email: session ? session.user?.email ?? 'ERROR EMAIL' : 'jon@me.com',
+            service: chosen_service ?? 'Haircut',
             location: '',
             date: timestamp,
             time: '10:00',
+            notes: '',
         },
 
         validate: {
@@ -46,8 +51,13 @@ export default function WholeForm(props: {
                 value.length < 2 ? 'Name must have at least 2 letters' : null,
             email: (value: string) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
             location: (value: string) =>
-                props.locations.map((location) => location.name).includes(value) ? null : 'Invalid location',
-            service: (value: string) => (props.services.map((service) => service.name).includes(value) ? null : 'Invalid service'),
+                props.locations.map((location) => location.name).includes(value)
+                    ? null
+                    : 'Invalid location',
+            service: (value: string) =>
+                props.services.map((service) => service.name).includes(value)
+                    ? null
+                    : 'Invalid service',
             date: (value: Date) => (value > new Date() ? null : 'Invalid date'),
             // time: (value: Date) => (value > new Date() ? null : 'Invalid time'), // TODO: check if time is within opening hours
         },
@@ -69,7 +79,10 @@ export default function WholeForm(props: {
                     name="location"
                     label="Location"
                     placeholder="Select a location"
-                    data={props.locations.map((location) => ({ value: location.id, label: location.name }))}
+                    data={props.locations.map((location) => ({
+                        value: location.id,
+                        label: location.name,
+                    }))}
                     {...form.getInputProps('location')}
                 />
                 <Select
@@ -77,7 +90,10 @@ export default function WholeForm(props: {
                     name="service"
                     label="Service"
                     placeholder="Choose one service"
-                    data={props.services.map((service) => ({ value: service.id, label: service.name }))}
+                    data={props.services.map((service) => ({
+                        value: service.id,
+                        label: service.name,
+                    }))}
                     {...form.getInputProps('service')}
                 />
 
@@ -136,7 +152,7 @@ export default function WholeForm(props: {
                     </>
                 ) : (
                     <>
-                        <Center py='40'> Already logged in </Center>
+                        <Center py="40"> Already logged in </Center>
                         <input
                             type="hidden"
                             name="name"
@@ -159,6 +175,15 @@ export default function WholeForm(props: {
             </Group>
             <Box hiddenFrom="sm">{form_items}</Box>
 
+            <Box py="20" px='80'>
+                <Textarea
+                    name="notes"
+                    label="Additional Notes"
+                    description="Enter here your notes"
+                    placeholder="Input placeholder"
+                    {...form.getInputProps('notes')}
+                />
+            </Box>
             <Center>
                 <Button type="submit" mt="xl">
                     Submit

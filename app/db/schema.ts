@@ -91,8 +91,7 @@ export const locations = pgTable('locations', {
 
 export const appointments = pgTable('appointments', {
     id: uuid('id').primaryKey().defaultRandom(),
-    userEmail: text('user_email')
-        .notNull(),
+    userEmail: text('user_email').notNull(),
     serviceId: uuid('service_id')
         .notNull()
         .references(() => services.id),

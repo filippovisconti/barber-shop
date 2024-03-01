@@ -2,7 +2,7 @@ import { Avatar, Button, Paper, Text } from '@mantine/core';
 import Link from 'next/link';
 import { Service } from '@/app/db/schema';
 
-export function UserInfoAction(props: { service: Service }) {
+export function ServiceInfoAction(props: { service: Service }) {
     return (
         <Paper radius="md" withBorder p="lg" bg="var(--mantine-color-body)">
             <Avatar

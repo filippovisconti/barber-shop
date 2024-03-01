@@ -12,7 +12,6 @@ import { ColorSchemeToggle } from '@/components/ColorSchemeToggle/ColorSchemeTog
 export function HeaderMegaMenu() {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
     const { data: session } = useSession();
-    console.log('session', session);
 
     const links = [
         <Link key="1" href="/" className={classes.link}>
@@ -36,7 +35,7 @@ export function HeaderMegaMenu() {
         <>
             {session ? (
                 <>
-                    Signed in as {session.user?.email}{' '}
+                    Welcome back, {session.user?.name}!{' '}
                     <Link key="5" href="/api/auth/signout">
                         <Button>Sign out</Button>
                     </Link>
@@ -58,8 +57,8 @@ export function HeaderMegaMenu() {
                         {links}
                     </Group>
                     <Group visibleFrom="sm">
-                        <ColorSchemeToggle />
                         {login_signup}
+                        <ColorSchemeToggle />
                     </Group>
                     <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
                 </Group>
@@ -81,6 +80,7 @@ export function HeaderMegaMenu() {
 
                     <Group justify="center" grow pb="xl" px="md">
                         {login_signup}
+                        <ColorSchemeToggle />
                     </Group>
                 </ScrollArea>
             </Drawer>

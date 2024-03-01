@@ -9,10 +9,10 @@ export default class AppointmentRepository {
         return result;
     }
 
-    public static async insert(data: NewAppointment): Promise<void> {
+    public static async insert(data: NewAppointment): Promise< { id: string }[]> {
         if (data) {
             try {
-                await db.insert(appointments).values(data);
+                return await db.insert(appointments).values(data).returning({ id: appointments.id });
             } catch (error) {
                 throw new Error(`Error inserting appointment: ${error}`);
             }
@@ -65,7 +65,7 @@ export default class AppointmentRepository {
     public static async getByUserId(userId: string): Promise<Appointment[]> {
         if (userId) {
             const result: Promise<Appointment[]> = db.query.appointments
-                .findMany({ where: eq(appointments.userId, userId) })
+                .findMany({ where: eq(appointments.userEmail, userId) })
                 .execute();
             return result;
         }

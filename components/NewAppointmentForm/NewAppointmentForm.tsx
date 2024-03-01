@@ -2,6 +2,7 @@
 import { Box, Title } from '@mantine/core';
 import WholeForm from '@/app/appointments/new/client';
 import { Location, Service } from '@/app/db/schema';
+import { redirect } from 'next/navigation';
 
 export interface FormValues {
     name: string;
@@ -10,6 +11,7 @@ export interface FormValues {
     service: string;
     date: string;
     time: string;
+    notes: string;
 }
 
 async function getLocations() {
@@ -25,7 +27,6 @@ async function getServices() {
 }
 
 export default async function NewAppointmentForm() {
-
     const rawLocations = await getLocations();
     const rawServices = await getServices();
     const parsedLocations: Location[] = JSON.parse(JSON.stringify(rawLocations));
@@ -36,15 +37,19 @@ export default async function NewAppointmentForm() {
 
         if (!process.env.BASE_URL) throw new Error('BASE_URL environment variable is required.');
         const url: URL = new URL('/api/appointments/new', process.env.BASE_URL);
-        const response = await fetch(url, {
+        await fetch(url, {
             method: 'POST',
             body: formData,
+        }).then(async (response) => {
+            if (response.ok) {
+                const json = await response.json();
+                const appoinment: { id: string } = JSON.parse(JSON.stringify(json));
+                console.log('Success: appointment created with id', appoinment.id);
+                redirect(`/appointments/${appoinment.id}`);
+            } else {
+                throw new Error(`HTTP error! status: ${response.body}`);
+            }
         });
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.body}`);
-        }
-        const data = await response.json();
-        console.log(`received data ${data}`);
     };
 
     return (
@@ -53,7 +58,11 @@ export default async function NewAppointmentForm() {
                 Schedule a new appointment
             </Title>
             <Box maw={840} mx="auto">
-                <WholeForm action={createAppointment} locations={parsedLocations} services={parsedServices} />
+                <WholeForm
+                    action={createAppointment}
+                    locations={parsedLocations}
+                    services={parsedServices}
+                />
             </Box>
         </>
     );

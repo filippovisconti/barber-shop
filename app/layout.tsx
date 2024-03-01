@@ -15,11 +15,19 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: any }) {
-    const css = '.content{min-height: 100vh;position: relative; } footer { position: absolute; bottom: 0; width: 100%;}';
+    const sticky_footer =
+        '.content{min-height: 100vh;position: relative;  } footer { position: fixed; bottom: 0; width: 100%; backdrop-filter: blur(4px);}';
+
+
+    const pad_body = '.main-body {padding-bottom:160px}';
+
     return (
         <html lang="en">
             <head>
-                <style>{css}</style>
+                <style>
+                {sticky_footer}
+                {pad_body}
+                </style>
                 <ColorSchemeScript defaultColorScheme="auto" />
                 <link rel="shortcut icon" href="/favicon.svg" />
                 <meta
@@ -31,15 +39,14 @@ export default function RootLayout({ children }: { children: any }) {
                 <MantineProvider theme={theme}>
                     <Providers>
                         <div className="content">
-
                             <HeaderMegaMenu />
 
-                            <div>{children}</div>
+                            <div className="main-body">{children}</div>
 
                             <FooterSocial />
                         </div>
-                    </Providers>
-                </MantineProvider>
+                     </Providers>
+                 </MantineProvider>
             </body>
         </html>
     );

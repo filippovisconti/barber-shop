@@ -39,7 +39,9 @@ export function LeadGrid() {
                             </Text>
 
                             <Button color="blue" fullWidth mt="md" radius="md">
-                                <Link href={`/appointments/new?uuid=${hotTowelShave_uuid}`}>Book now</Link>
+                                <Link href={`/appointments/new?uuid=${hotTowelShave_uuid}`}>
+                                    Book now
+                                </Link>
                             </Button>
                         </Card>{' '}
                     </Grid.Col>
