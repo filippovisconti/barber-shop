@@ -6,6 +6,7 @@ import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import { theme } from '../theme';
 import { HeaderMegaMenu } from '@/components/Header/Header';
 import { FooterSocial } from '@/components/FooterSocial/FooterSocial';
+import { Providers } from './provider';
 
 export const metadata = {
     title: 'Barber Shop Name',
@@ -14,9 +15,11 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: any }) {
+    const css = '.content{min-height: 100vh;position: relative; } footer { position: absolute; bottom: 0; width: 100%;}';
     return (
         <html lang="en">
             <head>
+                <style>{css}</style>
                 <ColorSchemeScript defaultColorScheme="auto" />
                 <link rel="shortcut icon" href="/favicon.svg" />
                 <meta
@@ -26,11 +29,16 @@ export default function RootLayout({ children }: { children: any }) {
             </head>
             <body>
                 <MantineProvider theme={theme}>
-                    <HeaderMegaMenu />
+                    <Providers>
+                        <div className="content">
 
-                    <div>{children}</div>
+                            <HeaderMegaMenu />
 
-                    <FooterSocial />
+                            <div>{children}</div>
+
+                            <FooterSocial />
+                        </div>
+                    </Providers>
                 </MantineProvider>
             </body>
         </html>

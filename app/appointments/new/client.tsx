@@ -1,5 +1,6 @@
 'use client';
 
+import { Location, Service } from '@/app/db/schema';
 import {
     ActionIcon,
     Box,
@@ -15,22 +16,29 @@ import {
 import { DatePickerInput, TimeInput } from '@mantine/dates';
 import { useForm } from '@mantine/form';
 import { IconClock } from '@tabler/icons-react';
+import { useSession } from 'next-auth/react';
+import { useSearchParams } from 'next/navigation';
 import { useRef } from 'react';
 
 export default function WholeForm(props: {
     action: (values: FormData) => void;
-    locations: string[];
-    services: string[];
+    locations: Location[];
+    services: Service[];
 }) {
+    const { data: session } = useSession();
+    const searchParams = useSearchParams();
+    const chosen_service: string | null = searchParams.get('uuid');
+
+    const timestamp : Date= new Date();
     const form = useForm({
         name: 'new-appointment-form',
         initialValues: {
-            name: 'pippo',
-            email: 'a@b.com',
-            service: 'Haircut',
-            location: 'Barber Street',
-            date: '',
-            time: '',
+            name: (session) ? session.user?.name ?? 'ERROR NAME' : 'Jon Doe',
+            email: (session) ? session.user?.email ?? 'ERROR EMAIL' : 'jon@me.com',
+            service: (chosen_service) ?? 'Haircut',
+            location: '',
+            date: timestamp,
+            time: '10:00',
         },
 
         validate: {
@@ -38,9 +46,9 @@ export default function WholeForm(props: {
                 value.length < 2 ? 'Name must have at least 2 letters' : null,
             email: (value: string) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
             location: (value: string) =>
-                props.locations.includes(value) ? null : 'Invalid location',
-            service: (value: string) => (props.services.includes(value) ? null : 'Invalid service'),
-            // date: (value: Date) => (value > new Date() ? null : 'Invalid date'),
+                props.locations.map((location) => location.name).includes(value) ? null : 'Invalid location',
+            service: (value: string) => (props.services.map((service) => service.name).includes(value) ? null : 'Invalid service'),
+            date: (value: Date) => (value > new Date() ? null : 'Invalid date'),
             // time: (value: Date) => (value > new Date() ? null : 'Invalid time'), // TODO: check if time is within opening hours
         },
     });
@@ -61,7 +69,7 @@ export default function WholeForm(props: {
                     name="location"
                     label="Location"
                     placeholder="Select a location"
-                    data={props.locations}
+                    data={props.locations.map((location) => ({ value: location.id, label: location.name }))}
                     {...form.getInputProps('location')}
                 />
                 <Select
@@ -69,7 +77,7 @@ export default function WholeForm(props: {
                     name="service"
                     label="Service"
                     placeholder="Choose one service"
-                    data={props.services}
+                    data={props.services.map((service) => ({ value: service.id, label: service.name }))}
                     {...form.getInputProps('service')}
                 />
 
@@ -102,27 +110,45 @@ export default function WholeForm(props: {
                         alt="Customer"
                     />
                 </Center>
-                <Title py="20" order={3}>
-                    Customer details
-                </Title>
+                {!session ? (
+                    <>
+                        <Title py="20" order={3}>
+                            Customer details
+                        </Title>
 
-                <TextInput
-                    py="10"
-                    withAsterisk
-                    name="name"
-                    label="Name"
-                    placeholder="Name"
-                    {...form.getInputProps('name')}
-                />
-                <TextInput
-                    withAsterisk
-                    mt="sm"
-                    label="Email"
-                    placeholder="Email"
-                    py="10"
-                    name="email"
-                    {...form.getInputProps('email')}
-                />
+                        <TextInput
+                            py="10"
+                            withAsterisk
+                            name="name"
+                            label="Name"
+                            placeholder="Name"
+                            {...form.getInputProps('name')}
+                        />
+                        <TextInput
+                            withAsterisk
+                            mt="sm"
+                            label="Email"
+                            placeholder="Email"
+                            py="10"
+                            name="email"
+                            {...form.getInputProps('email')}
+                        />
+                    </>
+                ) : (
+                    <>
+                        <Center py='40'> Already logged in </Center>
+                        <input
+                            type="hidden"
+                            name="name"
+                            value={session?.user?.name ?? 'ERROR USER NAME'}
+                        />
+                        <input
+                            type="hidden"
+                            name="email"
+                            value={session?.user?.email ?? 'ERROR EMAIL'}
+                        />
+                    </>
+                )}
             </Box>
         </>
     );

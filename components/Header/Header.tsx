@@ -4,12 +4,15 @@ import { Box, Burger, Button, Divider, Drawer, Group, ScrollArea, rem } from '@m
 import { useDisclosure } from '@mantine/hooks';
 import { MantineLogo } from '@mantinex/mantine-logo';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 import classes from './Header.module.css';
 
 import { ColorSchemeToggle } from '@/components/ColorSchemeToggle/ColorSchemeToggle';
 
 export function HeaderMegaMenu() {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
+    const { data: session } = useSession();
+    console.log('session', session);
 
     const links = [
         <Link key="1" href="/" className={classes.link}>
@@ -29,14 +32,22 @@ export function HeaderMegaMenu() {
         </Link>,
     ];
 
-    const login_signup = [
-        <Link key="5" href="/login">
-            <Button variant="default">Log in</Button>
-        </Link>,
-        <Link key="6" href="/signup">
-            <Button>Sign up</Button>
-        </Link>,
-    ];
+    const login_signup = (
+        <>
+            {session ? (
+                <>
+                    Signed in as {session.user?.email}{' '}
+                    <Link key="5" href="/api/auth/signout">
+                        <Button>Sign out</Button>
+                    </Link>
+                </>
+            ) : (
+                <Link key="6" href="/api/auth/signin">
+                    <Button>Sign in</Button>
+                </Link>
+            )}
+        </>
+    );
 
     return (
         <Box pb={120}>

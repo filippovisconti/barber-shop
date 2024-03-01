@@ -25,12 +25,11 @@ async function getServices() {
 }
 
 export default async function NewAppointmentForm() {
+
     const rawLocations = await getLocations();
     const rawServices = await getServices();
     const parsedLocations: Location[] = JSON.parse(JSON.stringify(rawLocations));
     const parsedServices: Service[] = JSON.parse(JSON.stringify(rawServices));
-    const locations = parsedLocations.map((location) => location.name);
-    const services = parsedServices.map((service) => service.name);
 
     const createAppointment = async (formData: FormData) => {
         'use server';
@@ -54,7 +53,7 @@ export default async function NewAppointmentForm() {
                 Schedule a new appointment
             </Title>
             <Box maw={840} mx="auto">
-                <WholeForm action={createAppointment} locations={locations} services={services} />
+                <WholeForm action={createAppointment} locations={parsedLocations} services={parsedServices} />
             </Box>
         </>
     );

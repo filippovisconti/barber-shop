@@ -10,11 +10,13 @@ if (!process.env.DATABASE_PORT) throw new Error('DATABASE_PORT environment varia
 
 if (!process.env.DATABASE_USER) throw new Error('DATABASE_USER environment variable is required.');
 
-if (!process.env.DATABASE_PASSWORD)
+if (!process.env.DATABASE_PASSWORD) {
     throw new Error('DATABASE_PASSWORD environment variable is required.');
+}
 
-if (!process.env.DATABASE_DBNAME)
+if (!process.env.DATABASE_DBNAME) {
     throw new Error('DATABASE_DBNAME environment variable is required.');
+}
 
 const dbCredentials: { [key: string]: string } = {
     host: process.env.DATABASE_URL,
@@ -26,5 +28,6 @@ const dbCredentials: { [key: string]: string } = {
 
 const connection_string: string = `postgres://${dbCredentials.user}:${dbCredentials.password}@${dbCredentials.host}:${dbCredentials.port}/${dbCredentials.database}`;
 export const db: PostgresJsDatabase<typeof schema> = drizzle(postgres(connection_string), {
-	schema,
+    schema: schema,
+    logger: true,
 });

@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
         serviceId: service,
         locationId: location,
         date: new Date(date),
-        userId: name,
+        userEmail: email,
     };
     try {
         await AppointmentRepository.insert(appointment);

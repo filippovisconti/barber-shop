@@ -1,5 +1,5 @@
 module.exports = {
-    root:true,
+    root: true,
     extends: ['mantine', 'plugin:@next/next/recommended', 'plugin:jest/recommended', "plugin:react-hooks/recommended"],
     plugins: ['testing-library', 'jest', '@typescript-eslint', 'prettier'],
     overrides: [
@@ -13,7 +13,8 @@ module.exports = {
     },
     rules: {
         'react/react-in-jsx-scope': 'off',
-        'import/extensions': 'off',
+        'indent': 'off',
+        'import/extensions': '1',
         'sort-imports': [
             'error',
             {
