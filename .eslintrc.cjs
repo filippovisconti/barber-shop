@@ -7,9 +7,11 @@ module.exports = {
         'plugin:@next/next/recommended',
         'plugin:jest/recommended',
         "plugin:react-hooks/recommended",
+        // "next/core-web-vitals",
+        "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "prettier"],
-    plugins: ['testing-library', 'jest', '@typescript-eslint', 'prettier'],
+    plugins: ['testing-library', 'jest', '@typescript-eslint', "@trivago/prettier-plugin-sort-imports", 'prettier'],
     overrides: [
         {
             files: ['**/?(*.)+(spec|test).[jt]s?(x)'],
