@@ -7,8 +7,7 @@ async function getData(id: string): Promise<string> {
     if (!id) throw new Error('id in getData is required.')
     const url: URL = new URL(`/api/appointments/${id}`, process.env.BASE_URL)
     const res = await fetch(url, { cache: 'no-store' })
-    const res_json = res.json()
-    return res_json
+    return res.json()
 }
 export default async function Page({ params }: { params: { id: string } }) {
     if (!params.id) throw new Error('No id found')

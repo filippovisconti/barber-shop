@@ -31,7 +31,7 @@ export function HeaderMegaMenu() {
         </Link>,
     ]
 
-    const login_signup = (
+    const loginSignupItem = (
         <>
             {session ? (
                 <>
@@ -57,7 +57,7 @@ export function HeaderMegaMenu() {
                         {links}
                     </Group>
                     <Group visibleFrom="sm">
-                        {login_signup}
+                        {loginSignupItem}
                         <ColorSchemeToggle />
                     </Group>
                     <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
@@ -79,7 +79,7 @@ export function HeaderMegaMenu() {
                     <Divider my="sm" />
 
                     <Group justify="center" grow pb="xl" px="md">
-                        {login_signup}
+                        {loginSignupItem}
                         <ColorSchemeToggle />
                     </Group>
                 </ScrollArea>

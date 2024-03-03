@@ -80,7 +80,7 @@ export default function SignUpForm() {
                 Sign up here
             </Title>
 
-            <form onSubmit={form.onSubmit(console.log)}>
+            <form /* onSubmit={form.onSubmit(console.log)} */>
                 <TextInput
                     withAsterisk
                     label="Name"

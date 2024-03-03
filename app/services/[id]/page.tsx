@@ -7,20 +7,19 @@ async function getData(id: string): Promise<string> {
     if (!id) throw new Error('id in getData is required.')
     const url: URL = new URL(`/api/services/${id}`, process.env.BASE_URL)
     const res = await fetch(url, { cache: 'no-store' })
-    const res_json = res.json()
-    return res_json
+    return res.json()
 }
 export default async function Page({ params }: { params: { id: string } }) {
     if (!params.id) throw new Error('No id found')
     const data: string = await getData(params.id)
     if (!data) throw new Error('No data found')
-    const chosen_service: Service = JSON.parse(JSON.stringify(data)) as Service
+    const chosenService: Service = JSON.parse(JSON.stringify(data)) as Service
     return (
         <main>
             <Container>
                 <Center>
                     <Box maw={{ base: 400, sm: 600 }} py="120">
-                        <ServiceInfoAction service={chosen_service} />
+                        <ServiceInfoAction service={chosenService} />
                     </Box>
                 </Center>
             </Container>

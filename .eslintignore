@@ -2,3 +2,4 @@
 *.mjs
 *.js
 migrate.ts
+StoryWrapper.tsx

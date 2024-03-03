@@ -27,8 +27,8 @@ const dbCredentials: { [key: string]: string } = {
     database: process.env.DATABASE_DBNAME,
 }
 
-const connection_string: string = `postgres://${dbCredentials.user}:${dbCredentials.password}@${dbCredentials.host}:${dbCredentials.port}/${dbCredentials.database}`
-export const db: PostgresJsDatabase<typeof schema> = drizzle(postgres(connection_string), {
-    schema: schema,
+const connectionString: string = `postgres://${dbCredentials.user}:${dbCredentials.password}@${dbCredentials.host}:${dbCredentials.port}/${dbCredentials.database}`
+export const db: PostgresJsDatabase<typeof schema> = drizzle(postgres(connectionString), {
+    schema,
     logger: true,
 })

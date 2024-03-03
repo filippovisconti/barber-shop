@@ -13,25 +13,26 @@ export async function POST(request: NextRequest) {
     const data = await request.formData()
     const service = data.get('service')?.toString()
     const location = data.get('location')?.toString()
-    const raw_date = data.get('date')?.toString()
+    const rawDate = data.get('date')?.toString()
     const time = data.get('time')?.toString()
     const name = data.get('name')?.toString()
     const email = data.get('email')?.toString()
     const notes = data.get('notes')?.toString()
-    if (!service || !location || !raw_date || !time || !name || !email) {
-        if (!service) console.log('service is missing')
-        if (!location) console.log('location is missing')
-        if (!raw_date) console.log('date is missing')
-        if (!time) console.log('time is missing')
-        if (!name) console.log('name is missing')
-        if (!email) console.log('email is missing')
+    if (!service || !location || !rawDate || !time || !name || !email) {
+        let error: string = ''
+        if (!service) error += 'service is missing'
+        if (!location) error += 'location is missing'
+        if (!rawDate) error += 'date is missing'
+        if (!time) error += 'time is missing'
+        if (!name) error += 'name is missing'
+        if (!email) error += 'email is missing'
 
-        return Response.json({ error: 'invalid form data' }, { status: 400 })
+        return Response.json({ error: `invalid form data: ${error}` }, { status: 400 })
     }
-    const date = addHoursAndMinutes(raw_date, 1, 0)
-    const time_parts = time.split(':')
-    if ((time_parts.length !== 2, date < new Date())) {
-        if (time_parts.length !== 2) console.log('time is invalid')
+    const date = addHoursAndMinutes(rawDate, 1, 0)
+    const timeParts = time.split(':')
+    if ((timeParts.length !== 2, date < new Date())) {
+        if (timeParts.length !== 2) console.log('time is invalid')
         if (date < new Date()) console.log('date is invalid')
         return Response.json({ error: 'invalid form data' }, { status: 400 })
     }
@@ -39,15 +40,15 @@ export async function POST(request: NextRequest) {
     const appointment: NewAppointment = {
         serviceId: service,
         locationId: location,
-        date: addHoursAndMinutes(date, parseInt(time_parts[0]), parseInt(time_parts[1])),
+        date: addHoursAndMinutes(date, parseInt(timeParts[0], 10), parseInt(timeParts[1], 10)),
         userEmail: email,
         status: 'confirmed',
-        notes: notes,
+        notes,
     }
     try {
-        const { id: new_appointment_id } = (await AppointmentRepository.insert(appointment))[0]
-        console.log(appointment, new_appointment_id)
-        return Response.json({ id: new_appointment_id })
+        const { id: newAppointmentId } = (await AppointmentRepository.insert(appointment))[0]
+        console.log(appointment, newAppointmentId)
+        return Response.json({ id: newAppointmentId })
     } catch (error) {
         console.error('[error] failed creating appointment', error)
         return Response.json({ error: 'failed, no appointmnet created' }, { status: 400 })

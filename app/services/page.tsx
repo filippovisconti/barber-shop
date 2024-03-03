@@ -15,11 +15,11 @@ async function getData() {
 
 export default async function Page() {
     const data = await getData()
-    const service_names: Service[] = JSON.parse(JSON.stringify(data)) as Service[]
-    const table_and_banner = (
+    const serviceNames: Service[] = JSON.parse(JSON.stringify(data)) as Service[]
+    const tableAndBanner = (
         <>
             <Box miw={{ base: 200, sm: 500, md: 600 }} py="20">
-                <ServiceTable service_names={service_names} />
+                <ServiceTable service_names={serviceNames} />
             </Box>
             <Box maw={300} mx="auto">
                 <ImageActionBanner />
@@ -34,9 +34,9 @@ export default async function Page() {
                     List of services
                 </Title>
                 <Group justify="center" grow visibleFrom="sm">
-                    {table_and_banner}
+                    {tableAndBanner}
                 </Group>
-                <Box hiddenFrom="sm">{table_and_banner}</Box>
+                <Box hiddenFrom="sm">{tableAndBanner}</Box>
                 <Space h="xl" />
                 <EmailBanner />
             </Container>

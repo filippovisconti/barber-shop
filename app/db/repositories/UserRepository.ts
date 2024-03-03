@@ -8,10 +8,12 @@ export default class UserRepository {
         const result: Promise<User[]> = db.query.users.findMany()
         return result
     }
+
     public static async insert(data: NewUser): Promise<void> {
         if (data) await db.insert(users).values(data)
         else throw new Error('No user data provided')
     }
+
     public static async updateById(id: string, data: User): Promise<void> {
         if (id) await db.update(users).set(data).where(eq(users.id, id))
         else if (data.id) db.update(users).set(data).where(eq(users.id, data.id))

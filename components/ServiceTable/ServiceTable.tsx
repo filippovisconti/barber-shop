@@ -14,11 +14,11 @@ export default function ServiceTable(props: { service_names: Service[] }) {
             </Table.Td>
             <Table.Td>{element.description}</Table.Td>
             <Table.Td>{element.price} €</Table.Td>
-            <Table.Td>{element.duration}' </Table.Td>
+            <Table.Td>{element.duration} &apos; </Table.Td>
         </Table.Tr>
     ))
 
-    const service_table = (
+    const serviceTable = (
         <Box py="40" px="5">
             <Table striped highlightOnHover>
                 <Table.Thead>
@@ -33,5 +33,5 @@ export default function ServiceTable(props: { service_names: Service[] }) {
             </Table>
         </Box>
     )
-    return service_table
+    return serviceTable
 }

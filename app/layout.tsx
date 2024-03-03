@@ -15,17 +15,17 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }: { children: any }) {
-    const sticky_footer =
+    const stickyFooter =
         '.content{min-height: 100vh;position: relative;  } footer { position: fixed; bottom: 0; width: 100%; backdrop-filter: blur(4px);}'
 
-    const pad_body = '.main-body {padding-bottom:160px}'
+    const padBody = '.main-body {padding-bottom:160px}'
 
     return (
         <html lang="en">
             <head>
                 <style>
-                    {sticky_footer}
-                    {pad_body}
+                    {stickyFooter}
+                    {padBody}
                 </style>
                 <ColorSchemeScript defaultColorScheme="auto" />
                 <link rel="shortcut icon" href="/favicon.svg" />

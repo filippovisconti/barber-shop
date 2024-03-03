@@ -28,7 +28,7 @@ export default function WholeForm(props: {
 }) {
     const { data: session } = useSession()
     const searchParams = useSearchParams()
-    const chosen_service: string | null = searchParams.get('uuid')
+    const chosenService: string | null = searchParams.get('uuid')
 
     const timestamp: Date = new Date()
     timestamp.setHours(0, 0, 0, 0)
@@ -39,7 +39,7 @@ export default function WholeForm(props: {
         initialValues: {
             name: session ? session.user?.name ?? 'ERROR NAME' : 'Jon Doe',
             email: session ? session.user?.email ?? 'ERROR EMAIL' : 'jon@me.com',
-            service: chosen_service ?? 'Haircut',
+            service: chosenService ?? 'Haircut',
             location: '',
             date: timestamp,
             time: '10:00',
@@ -68,7 +68,7 @@ export default function WholeForm(props: {
             <IconClock style={{ width: rem(16), height: rem(16) }} stroke={1.5} />
         </ActionIcon>
     )
-    const form_items = (
+    const formItems= (
         <>
             <Box p="10">
                 <Title py="20" order={3}>
@@ -171,9 +171,9 @@ export default function WholeForm(props: {
     return (
         <form action={props.action}>
             <Group grow visibleFrom="sm">
-                {form_items}
+                {formItems}
             </Group>
-            <Box hiddenFrom="sm">{form_items}</Box>
+            <Box hiddenFrom="sm">{formItems}</Box>
 
             <Box py="20" px="80">
                 <Textarea
