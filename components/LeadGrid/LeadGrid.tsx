@@ -9,16 +9,16 @@ import {
     Skeleton,
     Text,
     rem,
-} from '@mantine/core';
-import Link from 'next/link';
-import { ActionsGrid } from '../ActionsGrid/ActionsGrid';
+} from '@mantine/core'
+import Link from 'next/link'
+import { ActionsGrid } from '../ActionsGrid/ActionsGrid'
 
-const PRIMARY_COL_HEIGHT = rem(300);
+const PRIMARY_COL_HEIGHT = rem(300)
 
 export function LeadGrid() {
-    const SECONDARY_COL_HEIGHT = `calc(${PRIMARY_COL_HEIGHT} / 2 - var(--mantine-spacing-md) / 2)`;
+    const SECONDARY_COL_HEIGHT = `calc(${PRIMARY_COL_HEIGHT} / 2 - var(--mantine-spacing-md) / 2)`
 
-    const hotTowelShave_uuid = '1cb819b2-d4db-4f1a-842f-cd1179383515';
+    const hotTowelShave_uuid = '1cb819b2-d4db-4f1a-842f-cd1179383515'
     return (
         <Container my="md">
             <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
@@ -32,27 +32,38 @@ export function LeadGrid() {
                             </Group>
 
                             <Text size="sm" c="dimmed">
-                                Relax and rejuvenate with our luxurious hot towel shave service.
-                                Experience the timeless art of grooming as our skilled barbers
-                                deliver a smooth and precise shave, leaving your skin feeling
-                                refreshed and revitalized.
+                                Relax and rejuvenate with our luxurious hot
+                                towel shave service. Experience the timeless art
+                                of grooming as our skilled barbers deliver a
+                                smooth and precise shave, leaving your skin
+                                feeling refreshed and revitalized.
                             </Text>
 
                             <Button color="blue" fullWidth mt="md" radius="md">
-                                <Link href={`/appointments/new?uuid=${hotTowelShave_uuid}`}>
+                                <Link
+                                    href={`/appointments/new?uuid=${hotTowelShave_uuid}`}
+                                >
                                     Book now
                                 </Link>
                             </Button>
                         </Card>{' '}
                     </Grid.Col>
                     <Grid.Col span={6}>
-                        <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} />
+                        <Skeleton
+                            height={SECONDARY_COL_HEIGHT}
+                            radius="md"
+                            animate={false}
+                        />
                     </Grid.Col>
                     <Grid.Col span={6}>
-                        <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} />
+                        <Skeleton
+                            height={SECONDARY_COL_HEIGHT}
+                            radius="md"
+                            animate={false}
+                        />
                     </Grid.Col>
                 </Grid>
             </SimpleGrid>
         </Container>
-    );
+    )
 }

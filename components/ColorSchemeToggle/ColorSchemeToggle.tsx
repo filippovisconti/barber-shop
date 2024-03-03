@@ -1,15 +1,19 @@
-'use client';
+'use client'
 
-import { ActionIcon, useComputedColorScheme, useMantineColorScheme } from '@mantine/core';
+import {
+    ActionIcon,
+    useComputedColorScheme,
+    useMantineColorScheme,
+} from '@mantine/core'
 
-import { MoonIcon, SunIcon } from '@modulz/radix-icons';
+import { MoonIcon, SunIcon } from '@modulz/radix-icons'
 
 export function ColorSchemeToggle() {
     const { toggleColorScheme } = useMantineColorScheme({
         keepTransitions: true,
-    });
-    const color = useComputedColorScheme('light');
-    const size = 18;
+    })
+    const color = useComputedColorScheme('light')
+    const size = 18
 
     return (
         <ActionIcon
@@ -25,5 +29,5 @@ export function ColorSchemeToggle() {
                 <MoonIcon style={{ width: size, height: size }} />
             )}
         </ActionIcon>
-    );
+    )
 }

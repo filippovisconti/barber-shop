@@ -1,17 +1,27 @@
-'use client';
+'use client'
 
-import { Box, Burger, Button, Divider, Drawer, Group, ScrollArea, rem } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import { MantineLogo } from '@mantinex/mantine-logo';
-import Link from 'next/link';
-import { useSession } from 'next-auth/react';
-import classes from './Header.module.css';
+import {
+    Box,
+    Burger,
+    Button,
+    Divider,
+    Drawer,
+    Group,
+    ScrollArea,
+    rem,
+} from '@mantine/core'
+import { useDisclosure } from '@mantine/hooks'
+import { MantineLogo } from '@mantinex/mantine-logo'
+import Link from 'next/link'
+import { useSession } from 'next-auth/react'
+import classes from './Header.module.css'
 
-import { ColorSchemeToggle } from '@/components/ColorSchemeToggle/ColorSchemeToggle';
+import { ColorSchemeToggle } from '@/components/ColorSchemeToggle/ColorSchemeToggle'
 
 export function HeaderMegaMenu() {
-    const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
-    const { data: session } = useSession();
+    const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
+        useDisclosure(false)
+    const { data: session } = useSession()
 
     const links = [
         <Link key="1" href="/" className={classes.link}>
@@ -29,7 +39,7 @@ export function HeaderMegaMenu() {
         <Link key="4" href="/appointments/new" className={classes.link}>
             Schedule Appointment
         </Link>,
-    ];
+    ]
 
     const login_signup = (
         <>
@@ -46,7 +56,7 @@ export function HeaderMegaMenu() {
                 </Link>
             )}
         </>
-    );
+    )
 
     return (
         <Box pb={120}>
@@ -60,7 +70,11 @@ export function HeaderMegaMenu() {
                         {login_signup}
                         <ColorSchemeToggle />
                     </Group>
-                    <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
+                    <Burger
+                        opened={drawerOpened}
+                        onClick={toggleDrawer}
+                        hiddenFrom="sm"
+                    />
                 </Group>
             </header>
 
@@ -85,5 +99,5 @@ export function HeaderMegaMenu() {
                 </ScrollArea>
             </Drawer>
         </Box>
-    );
+    )
 }

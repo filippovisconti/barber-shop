@@ -1,5 +1,5 @@
-import { Container } from '@mantine/core';
-import NewAppointmentForm from '@/components/NewAppointmentForm/NewAppointmentForm';
+import { Container } from '@mantine/core'
+import NewAppointmentForm from '@/components/NewAppointmentForm/NewAppointmentForm'
 
 export default function Page() {
     return (
@@ -8,5 +8,5 @@ export default function Page() {
                 <NewAppointmentForm />
             </Container>
         </main>
-    );
+    )
 }

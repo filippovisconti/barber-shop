@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import { Box, Table, Text } from '@mantine/core';
-import Link from 'next/link';
-import { Service } from '@/app/db/schema';
+import { Box, Table, Text } from '@mantine/core'
+import Link from 'next/link'
+import { Service } from '@/app/db/schema'
 
 export default function ServiceTable(props: { service_names: Service[] }) {
     const rows = props.service_names.map((element: Service) => (
@@ -16,7 +16,7 @@ export default function ServiceTable(props: { service_names: Service[] }) {
             <Table.Td>{element.price} €</Table.Td>
             <Table.Td>{element.duration}' </Table.Td>
         </Table.Tr>
-    ));
+    ))
 
     const service_table = (
         <Box py="40" px="5">
@@ -32,6 +32,6 @@ export default function ServiceTable(props: { service_names: Service[] }) {
                 <Table.Tbody>{rows}</Table.Tbody>
             </Table>
         </Box>
-    );
-    return service_table;
+    )
+    return service_table
 }

@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import { Container } from '@mantine/core';
-import React from 'react';
-import LoginForm from '@/components/LoginForm/LoginForm';
+import { Container } from '@mantine/core'
+import React from 'react'
+import LoginForm from '@/components/LoginForm/LoginForm'
 
 export default function Page() {
     return (
@@ -11,5 +11,5 @@ export default function Page() {
                 <LoginForm />
             </Container>
         </main>
-    );
+    )
 }

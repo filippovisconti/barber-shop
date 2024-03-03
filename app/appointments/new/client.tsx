@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { Location, Service } from '@/app/db/schema';
+import { Location, Service } from '@/app/db/schema'
 import {
     ActionIcon,
     Box,
@@ -13,32 +13,34 @@ import {
     Textarea,
     Title,
     rem,
-} from '@mantine/core';
-import { DatePickerInput, TimeInput } from '@mantine/dates';
-import { useForm } from '@mantine/form';
-import { IconClock } from '@tabler/icons-react';
-import { useSession } from 'next-auth/react';
-import { useSearchParams } from 'next/navigation';
-import { useRef } from 'react';
+} from '@mantine/core'
+import { DatePickerInput, TimeInput } from '@mantine/dates'
+import { useForm } from '@mantine/form'
+import { IconClock } from '@tabler/icons-react'
+import { useSession } from 'next-auth/react'
+import { useSearchParams } from 'next/navigation'
+import { useRef } from 'react'
 
 export default function WholeForm(props: {
-    action: (values: FormData) => void;
-    locations: Location[];
-    services: Service[];
+    action: (values: FormData) => void
+    locations: Location[]
+    services: Service[]
 }) {
-    const { data: session } = useSession();
-    const searchParams = useSearchParams();
-    const chosen_service: string | null = searchParams.get('uuid');
+    const { data: session } = useSession()
+    const searchParams = useSearchParams()
+    const chosen_service: string | null = searchParams.get('uuid')
 
-    const timestamp: Date = new Date();
-    timestamp.setHours(0, 0, 0, 0);
-    timestamp.setDate(timestamp.getDate() + 1);
+    const timestamp: Date = new Date()
+    timestamp.setHours(0, 0, 0, 0)
+    timestamp.setDate(timestamp.getDate() + 1)
 
     const form = useForm({
         name: 'new-appointment-form',
         initialValues: {
             name: session ? session.user?.name ?? 'ERROR NAME' : 'Jon Doe',
-            email: session ? session.user?.email ?? 'ERROR EMAIL' : 'jon@me.com',
+            email: session
+                ? session.user?.email ?? 'ERROR EMAIL'
+                : 'jon@me.com',
             service: chosen_service ?? 'Haircut',
             location: '',
             date: timestamp,
@@ -49,7 +51,8 @@ export default function WholeForm(props: {
         validate: {
             name: (value: string) =>
                 value.length < 2 ? 'Name must have at least 2 letters' : null,
-            email: (value: string) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
+            email: (value: string) =>
+                /^\S+@\S+$/.test(value) ? null : 'Invalid email',
             location: (value: string) =>
                 props.locations.map((location) => location.name).includes(value)
                     ? null
@@ -61,13 +64,20 @@ export default function WholeForm(props: {
             date: (value: Date) => (value > new Date() ? null : 'Invalid date'),
             // time: (value: Date) => (value > new Date() ? null : 'Invalid time'), // TODO: check if time is within opening hours
         },
-    });
-    const ref = useRef<HTMLInputElement>(null);
+    })
+    const ref = useRef<HTMLInputElement>(null)
     const pickerControl = (
-        <ActionIcon variant="subtle" color="gray" onClick={() => ref.current?.showPicker()}>
-            <IconClock style={{ width: rem(16), height: rem(16) }} stroke={1.5} />
+        <ActionIcon
+            variant="subtle"
+            color="gray"
+            onClick={() => ref.current?.showPicker()}
+        >
+            <IconClock
+                style={{ width: rem(16), height: rem(16) }}
+                stroke={1.5}
+            />
         </ActionIcon>
-    );
+    )
     const form_items = (
         <>
             <Box p="10">
@@ -167,7 +177,7 @@ export default function WholeForm(props: {
                 )}
             </Box>
         </>
-    );
+    )
     return (
         <form action={props.action}>
             <Group grow visibleFrom="sm">
@@ -175,7 +185,7 @@ export default function WholeForm(props: {
             </Group>
             <Box hiddenFrom="sm">{form_items}</Box>
 
-            <Box py="20" px='80'>
+            <Box py="20" px="80">
                 <Textarea
                     name="notes"
                     label="Additional Notes"
@@ -190,5 +200,5 @@ export default function WholeForm(props: {
                 </Button>
             </Center>
         </form>
-    );
+    )
 }

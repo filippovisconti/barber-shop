@@ -1,32 +1,31 @@
-import '@mantine/core/styles.css';
-import '@mantine/dates/styles.css';
+import '@mantine/core/styles.css'
+import '@mantine/dates/styles.css'
 
-import React from 'react';
-import { ColorSchemeScript, MantineProvider } from '@mantine/core';
-import { theme } from '../theme';
-import { HeaderMegaMenu } from '@/components/Header/Header';
-import { FooterSocial } from '@/components/FooterSocial/FooterSocial';
-import { Providers } from './provider';
+import React from 'react'
+import { ColorSchemeScript, MantineProvider } from '@mantine/core'
+import { theme } from '../theme'
+import { HeaderMegaMenu } from '@/components/Header/Header'
+import { FooterSocial } from '@/components/FooterSocial/FooterSocial'
+import { Providers } from './provider'
 
 export const metadata = {
     title: 'Barber Shop Name',
     description:
         'Barber Shop Name is a modern barbershop located in the heart of the city. We offer a wide range of services, from classic haircuts to beard trims and hot towel shaves. Our team of skilled barbers is dedicated to providing an exceptional grooming experience for every client. Book your appointment today!',
-};
+}
 
 export default function RootLayout({ children }: { children: any }) {
     const sticky_footer =
-        '.content{min-height: 100vh;position: relative;  } footer { position: fixed; bottom: 0; width: 100%; backdrop-filter: blur(4px);}';
+        '.content{min-height: 100vh;position: relative;  } footer { position: fixed; bottom: 0; width: 100%; backdrop-filter: blur(4px);}'
 
-
-    const pad_body = '.main-body {padding-bottom:160px}';
+    const pad_body = '.main-body {padding-bottom:160px}'
 
     return (
         <html lang="en">
             <head>
                 <style>
-                {sticky_footer}
-                {pad_body}
+                    {sticky_footer}
+                    {pad_body}
                 </style>
                 <ColorSchemeScript defaultColorScheme="auto" />
                 <link rel="shortcut icon" href="/favicon.svg" />
@@ -45,9 +44,9 @@ export default function RootLayout({ children }: { children: any }) {
 
                             <FooterSocial />
                         </div>
-                     </Providers>
-                 </MantineProvider>
+                    </Providers>
+                </MantineProvider>
             </body>
         </html>
-    );
+    )
 }

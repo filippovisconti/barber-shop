@@ -1,7 +1,7 @@
-'use client';
+'use client'
 
-import { Center, Container, Title } from '@mantine/core';
-import { GetInTouch } from '@/components/GetInTouch/GetInTouch';
+import { Center, Container, Title } from '@mantine/core'
+import { GetInTouch } from '@/components/GetInTouch/GetInTouch'
 
 const page = () => (
     <main>
@@ -14,6 +14,6 @@ const page = () => (
             <GetInTouch />
         </Container>
     </main>
-);
+)
 
-export default page;
+export default page

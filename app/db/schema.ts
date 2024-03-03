@@ -1,5 +1,5 @@
-import type { AdapterAccount } from '@auth/core/adapters';
-import { relations } from 'drizzle-orm';
+import type { AdapterAccount } from '@auth/core/adapters'
+import { relations } from 'drizzle-orm'
 import {
     integer,
     pgEnum,
@@ -10,7 +10,7 @@ import {
     timestamp,
     uuid,
     varchar,
-} from 'drizzle-orm/pg-core';
+} from 'drizzle-orm/pg-core'
 
 export const users = pgTable('user', {
     id: text('id').notNull().primaryKey(),
@@ -18,7 +18,7 @@ export const users = pgTable('user', {
     email: text('email').notNull(),
     emailVerified: timestamp('emailVerified', { mode: 'date' }),
     image: text('image'),
-});
+})
 
 export const accounts = pgTable(
     'account',
@@ -38,9 +38,11 @@ export const accounts = pgTable(
         session_state: text('session_state'),
     },
     (account) => ({
-        compoundKey: primaryKey({ columns: [account.provider, account.providerAccountId] }),
+        compoundKey: primaryKey({
+            columns: [account.provider, account.providerAccountId],
+        }),
     })
-);
+)
 
 export const sessions = pgTable('session', {
     sessionToken: text('sessionToken').notNull().primaryKey(),
@@ -48,7 +50,7 @@ export const sessions = pgTable('session', {
         .notNull()
         .references(() => users.id, { onDelete: 'cascade' }),
     expires: timestamp('expires', { mode: 'date' }).notNull(),
-});
+})
 
 export const verificationTokens = pgTable(
     'verificationToken',
@@ -60,7 +62,7 @@ export const verificationTokens = pgTable(
     (vt) => ({
         compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
     })
-);
+)
 export const statusEnum = pgEnum('status', [
     'completed',
     'cancelled',
@@ -70,7 +72,7 @@ export const statusEnum = pgEnum('status', [
     'no-show',
     'late',
     'early',
-]);
+])
 
 export const services = pgTable('services', {
     id: uuid('id').primaryKey().defaultRandom(),
@@ -78,7 +80,7 @@ export const services = pgTable('services', {
     description: text('description').notNull(),
     price: real('price').notNull(),
     duration: integer('duration').notNull().default(30),
-});
+})
 
 export const locations = pgTable('locations', {
     id: uuid('id').primaryKey().defaultRandom(),
@@ -87,7 +89,7 @@ export const locations = pgTable('locations', {
     city: text('city').notNull(),
     openingAt: timestamp('opening_at').notNull(),
     closingAt: timestamp('closing_at').notNull(),
-});
+})
 
 export const appointments = pgTable('appointments', {
     id: uuid('id').primaryKey().defaultRandom(),
@@ -102,15 +104,15 @@ export const appointments = pgTable('appointments', {
     notes: text('notes'),
     createdAt: timestamp('created_at').notNull().defaultNow(),
     status: statusEnum('status'),
-});
+})
 
 export const userRelations = relations(users, ({ many }) => ({
     appointment: many(appointments),
-}));
+}))
 
 export const serviceRelations = relations(services, ({ many }) => ({
     appointment: many(appointments),
-}));
+}))
 
 export const appointmentRelations = relations(appointments, ({ one }) => ({
     service: one(services, {
@@ -121,20 +123,20 @@ export const appointmentRelations = relations(appointments, ({ one }) => ({
         fields: [appointments.locationId],
         references: [locations.id],
     }),
-}));
+}))
 
 export const locationRelations = relations(locations, ({ many }) => ({
     appointment: many(appointments),
-}));
+}))
 
-export type User = typeof users.$inferSelect; // return type when queried
-export type NewUser = typeof users.$inferInsert; // insert type
+export type User = typeof users.$inferSelect // return type when queried
+export type NewUser = typeof users.$inferInsert // insert type
 
-export type Service = typeof services.$inferSelect; // return type when queried
-export type NewService = typeof services.$inferInsert; // insert type
+export type Service = typeof services.$inferSelect // return type when queried
+export type NewService = typeof services.$inferInsert // insert type
 
-export type Appointment = typeof appointments.$inferSelect; // return type when queried
-export type NewAppointment = typeof appointments.$inferInsert; // insert type
+export type Appointment = typeof appointments.$inferSelect // return type when queried
+export type NewAppointment = typeof appointments.$inferInsert // insert type
 
-export type Location = typeof locations.$inferSelect; // return type when queried
-export type NewLocation = typeof locations.$inferInsert; // insert type
+export type Location = typeof locations.$inferSelect // return type when queried
+export type NewLocation = typeof locations.$inferInsert // insert type

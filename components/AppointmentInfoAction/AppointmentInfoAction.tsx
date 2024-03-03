@@ -1,11 +1,13 @@
-import { Avatar, Button, Paper, Text, Title } from '@mantine/core';
-import Link from 'next/link';
-import { Appointment } from '@/app/db/schema';
+import { Avatar, Button, Paper, Text, Title } from '@mantine/core'
+import Link from 'next/link'
+import { Appointment } from '@/app/db/schema'
 
 export function AppointmentInfoAction(props: { appointment: Appointment }) {
     return (
         <>
-            <Title order={1} pb='40' >Appointment details</Title>
+            <Title order={1} pb="40">
+                Appointment details
+            </Title>
             <Paper radius="md" withBorder p="lg" bg="var(--mantine-color-body)">
                 <Avatar
                     // TODO: Change this to the actual image
@@ -34,5 +36,5 @@ export function AppointmentInfoAction(props: { appointment: Appointment }) {
                 </Link>
             </Paper>
         </>
-    );
+    )
 }

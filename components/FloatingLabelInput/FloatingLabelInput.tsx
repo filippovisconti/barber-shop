@@ -1,11 +1,14 @@
-import { TextInput } from '@mantine/core';
-import { useState } from 'react';
-import classes from './FloatingLabelInput.module.css';
+import { TextInput } from '@mantine/core'
+import { useState } from 'react'
+import classes from './FloatingLabelInput.module.css'
 
-export function FloatingLabelInput(props: { label: string; placeholder: string }) {
-    const [focused, setFocused] = useState(false);
-    const [value, setValue] = useState('');
-    const floating = value.trim().length !== 0 || focused || undefined;
+export function FloatingLabelInput(props: {
+    label: string
+    placeholder: string
+}) {
+    const [focused, setFocused] = useState(false)
+    const [value, setValue] = useState('')
+    const floating = value.trim().length !== 0 || focused || undefined
 
     return (
         <TextInput
@@ -22,5 +25,5 @@ export function FloatingLabelInput(props: { label: string; placeholder: string }
             data-floating={floating}
             labelProps={{ 'data-floating': floating }}
         />
-    );
+    )
 }

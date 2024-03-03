@@ -1,17 +1,20 @@
-import type { Config } from 'drizzle-kit';
-import 'dotenv/config';
+import type { Config } from 'drizzle-kit'
+import 'dotenv/config'
 
-if (!process.env.DATABASE_URL) throw new Error('DATABASE_URL environment variable is required.');
+if (!process.env.DATABASE_URL)
+    throw new Error('DATABASE_URL environment variable is required.')
 
-if (!process.env.DATABASE_PORT) throw new Error('DATABASE_PORT environment variable is required.');
+if (!process.env.DATABASE_PORT)
+    throw new Error('DATABASE_PORT environment variable is required.')
 
-if (!process.env.DATABASE_USER) throw new Error('DATABASE_USER environment variable is required.');
+if (!process.env.DATABASE_USER)
+    throw new Error('DATABASE_USER environment variable is required.')
 
 if (!process.env.DATABASE_PASSWORD)
-    throw new Error('DATABASE_PASSWORD environment variable is required.');
+    throw new Error('DATABASE_PASSWORD environment variable is required.')
 
 if (!process.env.DATABASE_DBNAME)
-    throw new Error('DATABASE_DBNAME environment variable is required.');
+    throw new Error('DATABASE_DBNAME environment variable is required.')
 
 export default {
     schema: './app/db/schema.ts',
@@ -26,4 +29,4 @@ export default {
     },
     verbose: true,
     strict: true,
-} satisfies Config;
+} satisfies Config

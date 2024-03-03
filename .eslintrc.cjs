@@ -1,6 +1,14 @@
 module.exports = {
     root: true,
-    extends: ['mantine', 'plugin:@next/next/recommended', 'plugin:jest/recommended', "plugin:react-hooks/recommended"],
+    extends: [
+        'mantine',
+        'airbnb-typescript',
+        'plugin:prettier/recommended',
+        'plugin:@next/next/recommended',
+        'plugin:jest/recommended',
+        "plugin:react-hooks/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"],
     plugins: ['testing-library', 'jest', '@typescript-eslint', 'prettier'],
     overrides: [
         {
@@ -12,9 +20,14 @@ module.exports = {
         project: './tsconfig.json',
     },
     rules: {
+        "@typescript-eslint/no-unused-vars": "error",
+        "@typescript-eslint/no-explicit-any": "error",
+        'react/no-danger': 'off',
         'react/react-in-jsx-scope': 'off',
+        'no-console': 'error',
         'indent': 'off',
-        'import/extensions': '1',
+        'import/extensions': 'off',
+        'prettier/prettier': 'off',
         'sort-imports': [
             'error',
             {

@@ -7,7 +7,7 @@ import {
     Text,
     UnstyledButton,
     useMantineTheme,
-} from '@mantine/core';
+} from '@mantine/core'
 import {
     IconBuildingBank,
     IconCashBanknote,
@@ -18,8 +18,8 @@ import {
     IconReceiptTax,
     IconRepeat,
     IconReport,
-} from '@tabler/icons-react';
-import classes from './ActionsGrid.module.css';
+} from '@tabler/icons-react'
+import classes from './ActionsGrid.module.css'
 
 const mockdata = [
     { title: 'Credit cards', icon: IconCreditCard, color: 'violet' },
@@ -31,10 +31,10 @@ const mockdata = [
     { title: 'Reports', icon: IconReport, color: 'pink' },
     { title: 'Payments', icon: IconCoin, color: 'red' },
     { title: 'Cashback', icon: IconCashBanknote, color: 'orange' },
-];
+]
 
 export function ActionsGrid() {
-    const theme = useMantineTheme();
+    const theme = useMantineTheme()
 
     const items = mockdata.map((item) => (
         <UnstyledButton key={item.title} className={classes.item}>
@@ -47,13 +47,18 @@ export function ActionsGrid() {
                 </Text>
             </Center>
         </UnstyledButton>
-    ));
+    ))
 
     return (
         <Card withBorder radius="md" className={classes.card}>
             <Group justify="space-between">
                 <Text className={classes.title}>Services</Text>
-                <Anchor size="xs" c="dimmed" style={{ lineHeight: 1 }} href="/services">
+                <Anchor
+                    size="xs"
+                    c="dimmed"
+                    style={{ lineHeight: 1 }}
+                    href="/services"
+                >
                     + 21 other services
                 </Anchor>
             </Group>
@@ -61,5 +66,5 @@ export function ActionsGrid() {
                 {items}
             </SimpleGrid>
         </Card>
-    );
+    )
 }

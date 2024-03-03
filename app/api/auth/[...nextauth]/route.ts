@@ -1,7 +1,7 @@
-import NextAuth, { NextAuthOptions } from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
-import GithubProvider from 'next-auth/providers/github';
-import GoogleProvider from 'next-auth/providers/google';
+import NextAuth, { NextAuthOptions } from 'next-auth'
+import CredentialsProvider from 'next-auth/providers/credentials'
+import GithubProvider from 'next-auth/providers/github'
+import GoogleProvider from 'next-auth/providers/google'
 
 const CredProv = CredentialsProvider({
     // The name to display on the sign in form (e.g. "Sign in with...")
@@ -15,10 +15,10 @@ const CredProv = CredentialsProvider({
         password: { label: 'Password', type: 'password' },
     },
     async authorize(credentials, req) {
-        if (!credentials) return null;
-        if (!req) return null;
+        if (!credentials) return null
+        if (!req) return null
 
-        const { username, password } = credentials;
+        const { username, password } = credentials
         // Fetch user and password hash from your database
 
         // Add logic here to look up the user from the credentials supplied
@@ -27,15 +27,15 @@ const CredProv = CredentialsProvider({
             name: 'J Smith',
             email: 'jsmith@example.com',
             image: 'https://i.pravatar.cc/150?u=jsmith@example.com',
-        };
+        }
         if (username === 'aa' && password === 'aa') {
             // Any object returned will be saved in `user` property of the JWT
-            return user;
+            return user
         }
         // If you return null then an error will be displayed advising the user to check their details.
-        return null;
+        return null
     },
-});
+})
 
 export const authOptions: NextAuthOptions = {
     // Configure one or more authentication providers
@@ -52,8 +52,8 @@ export const authOptions: NextAuthOptions = {
         CredProv,
     ],
     secret: process.env.NEXTAUTH_SECRET as string,
-};
+}
 
-const handler = NextAuth(authOptions);
+const handler = NextAuth(authOptions)
 
-export { handler as GET, handler as POST };
+export { handler as GET, handler as POST }

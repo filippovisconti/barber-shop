@@ -8,12 +8,18 @@ import {
     TextInput,
     Title,
     rem,
-} from '@mantine/core';
-import { useForm } from '@mantine/form';
-import { IconCheck, IconX } from '@tabler/icons-react';
-import { useState } from 'react';
+} from '@mantine/core'
+import { useForm } from '@mantine/form'
+import { IconCheck, IconX } from '@tabler/icons-react'
+import { useState } from 'react'
 
-function PasswordRequirement({ meets, label }: { meets: boolean; label: string }) {
+function PasswordRequirement({
+    meets,
+    label,
+}: {
+    meets: boolean
+    label: string
+}) {
     return (
         <Text
             c={meets ? 'teal' : 'red'}
@@ -28,7 +34,7 @@ function PasswordRequirement({ meets, label }: { meets: boolean; label: string }
             )}{' '}
             <Box ml={10}>{label}</Box>
         </Text>
-    );
+    )
 }
 
 const requirements = [
@@ -36,43 +42,45 @@ const requirements = [
     { re: /[a-z]/, label: 'Includes lowercase letter' },
     { re: /[A-Z]/, label: 'Includes uppercase letter' },
     { re: /[$&+,:;=?@#|'<>.^*()%!-]/, label: 'Includes special symbol' },
-];
+]
 
 function getStrength(password: string) {
-    let multiplier = password.length > 5 ? 0 : 1;
+    let multiplier = password.length > 5 ? 0 : 1
 
     requirements.forEach((requirement) => {
         if (!requirement.re.test(password)) {
-            multiplier += 1;
+            multiplier += 1
         }
-    });
+    })
 
-    return Math.max(100 - (100 / (requirements.length + 1)) * multiplier, 10);
+    return Math.max(100 - (100 / (requirements.length + 1)) * multiplier, 10)
 }
 
 export default function SignUpForm() {
-    const [popoverOpened, setPopoverOpened] = useState(false);
-    const [value, setValue] = useState('');
+    const [popoverOpened, setPopoverOpened] = useState(false)
+    const [value, setValue] = useState('')
     const checks = requirements.map((requirement, index) => (
         <PasswordRequirement
             key={index}
             label={requirement.label}
             meets={requirement.re.test(value)}
         />
-    ));
+    ))
 
-    const strength = getStrength(value);
-    const color = strength === 100 ? 'teal' : strength > 50 ? 'yellow' : 'red';
+    const strength = getStrength(value)
+    const color = strength === 100 ? 'teal' : strength > 50 ? 'yellow' : 'red'
 
     const form = useForm({
         initialValues: { name: '', email: '', age: 0 },
 
         // functions will be used to validate values at corresponding key
         validate: {
-            name: (val: string) => (val.length < 2 ? 'Name must have at least 2 letters' : null),
-            email: (val: string) => (/^\S+@\S+$/.test(val) ? null : 'Invalid email'),
+            name: (val: string) =>
+                val.length < 2 ? 'Name must have at least 2 letters' : null,
+            email: (val: string) =>
+                /^\S+@\S+$/.test(val) ? null : 'Invalid email',
         },
-    });
+    })
 
     return (
         <Box maw={340} mx="auto">
@@ -111,12 +119,19 @@ export default function SignUpForm() {
                                 label="Choose a strong password"
                                 placeholder="Your password"
                                 value={value}
-                                onChange={(event) => setValue(event.currentTarget.value)}
+                                onChange={(event) =>
+                                    setValue(event.currentTarget.value)
+                                }
                             />
                         </div>
                     </Popover.Target>
                     <Popover.Dropdown>
-                        <Progress color={color} value={strength} size={5} mb="xs" />
+                        <Progress
+                            color={color}
+                            value={strength}
+                            size={5}
+                            mb="xs"
+                        />
                         <PasswordRequirement
                             label="Includes at least 8 characters"
                             meets={value.length > 7}
@@ -136,5 +151,5 @@ export default function SignUpForm() {
                 </Button>
             </form>
         </Box>
-    );
+    )
 }
