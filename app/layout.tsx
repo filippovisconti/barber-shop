@@ -1,11 +1,11 @@
+import { FooterSocial } from '@/components/FooterSocial/FooterSocial'
+import { HeaderMegaMenu } from '@/components/Header/Header'
+import { ColorSchemeScript, MantineProvider } from '@mantine/core'
 import '@mantine/core/styles.css'
 import '@mantine/dates/styles.css'
-
 import React from 'react'
-import { ColorSchemeScript, MantineProvider } from '@mantine/core'
+
 import { theme } from '../theme'
-import { HeaderMegaMenu } from '@/components/Header/Header'
-import { FooterSocial } from '@/components/FooterSocial/FooterSocial'
 import { Providers } from './provider'
 
 export const metadata = {

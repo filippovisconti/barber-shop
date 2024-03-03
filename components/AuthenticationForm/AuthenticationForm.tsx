@@ -1,5 +1,3 @@
-import { upperFirst, useToggle } from '@mantine/hooks'
-import { useForm } from '@mantine/form'
 import {
     Anchor,
     Button,
@@ -13,6 +11,9 @@ import {
     Text,
     TextInput,
 } from '@mantine/core'
+import { useForm } from '@mantine/form'
+import { upperFirst, useToggle } from '@mantine/hooks'
+
 import { GoogleButton } from './GoogleButton'
 import { TwitterButton } from './TwitterButton'
 
@@ -29,9 +30,7 @@ export function AuthenticationForm(props: PaperProps) {
         validate: {
             email: (val) => (/^\S+@\S+$/.test(val) ? null : 'Invalid email'),
             password: (val) =>
-                val.length <= 6
-                    ? 'Password should include at least 6 characters'
-                    : null,
+                val.length <= 6 ? 'Password should include at least 6 characters' : null,
         },
     })
 
@@ -46,11 +45,7 @@ export function AuthenticationForm(props: PaperProps) {
                 <TwitterButton radius="xl">Twitter</TwitterButton>
             </Group>
 
-            <Divider
-                label="Or continue with email"
-                labelPosition="center"
-                my="lg"
-            />
+            <Divider label="Or continue with email" labelPosition="center" my="lg" />
 
             <form onSubmit={form.onSubmit(() => {})}>
                 <Stack>
@@ -60,10 +55,7 @@ export function AuthenticationForm(props: PaperProps) {
                             placeholder="Your name"
                             value={form.values.name}
                             onChange={(event) =>
-                                form.setFieldValue(
-                                    'name',
-                                    event.currentTarget.value
-                                )
+                                form.setFieldValue('name', event.currentTarget.value)
                             }
                             radius="md"
                         />
@@ -74,12 +66,7 @@ export function AuthenticationForm(props: PaperProps) {
                         label="Email"
                         placeholder="hello@mantine.dev"
                         value={form.values.email}
-                        onChange={(event) =>
-                            form.setFieldValue(
-                                'email',
-                                event.currentTarget.value
-                            )
-                        }
+                        onChange={(event) => form.setFieldValue('email', event.currentTarget.value)}
                         error={form.errors.email && 'Invalid email'}
                         radius="md"
                     />
@@ -90,14 +77,10 @@ export function AuthenticationForm(props: PaperProps) {
                         placeholder="Your password"
                         value={form.values.password}
                         onChange={(event) =>
-                            form.setFieldValue(
-                                'password',
-                                event.currentTarget.value
-                            )
+                            form.setFieldValue('password', event.currentTarget.value)
                         }
                         error={
-                            form.errors.password &&
-                            'Password should include at least 6 characters'
+                            form.errors.password && 'Password should include at least 6 characters'
                         }
                         radius="md"
                     />
@@ -107,10 +90,7 @@ export function AuthenticationForm(props: PaperProps) {
                             label="I accept terms and conditions"
                             checked={form.values.terms}
                             onChange={(event) =>
-                                form.setFieldValue(
-                                    'terms',
-                                    event.currentTarget.checked
-                                )
+                                form.setFieldValue('terms', event.currentTarget.checked)
                             }
                         />
                     )}

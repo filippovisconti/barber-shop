@@ -1,8 +1,8 @@
 'use client'
 
+import { Service } from '@/app/db/schema'
 import { Box, Table, Text } from '@mantine/core'
 import Link from 'next/link'
-import { Service } from '@/app/db/schema'
 
 export default function ServiceTable(props: { service_names: Service[] }) {
     const rows = props.service_names.map((element: Service) => (

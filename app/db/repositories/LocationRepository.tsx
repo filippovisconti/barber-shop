@@ -1,7 +1,7 @@
 import { eq } from 'drizzle-orm'
-import { Location, NewLocation, locations } from '../schema'
 
 import { db } from '../db'
+import { Location, NewLocation, locations } from '../schema'
 
 export default class LocationRepository {
     public static async getAll(): Promise<Location[]> {
@@ -16,8 +16,7 @@ export default class LocationRepository {
 
     public static async updateById(id: string, data: Location): Promise<void> {
         if (id) db.update(locations).set(data).where(eq(locations.id, id))
-        else if (data.id)
-            db.update(locations).set(data).where(eq(locations.id, data.id))
+        else if (data.id) db.update(locations).set(data).where(eq(locations.id, data.id))
         else throw new Error('No id or data.id provided')
     }
 
@@ -38,10 +37,7 @@ export default class LocationRepository {
         } else throw new Error('No id provided')
     }
 
-    public static async getByField(
-        field: string,
-        value: string
-    ): Promise<Location[]> {
+    public static async getByField(field: string, value: string): Promise<Location[]> {
         if (field && value) {
             const result: Promise<Location[]> = db.query.locations
                 .findMany({

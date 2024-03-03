@@ -1,8 +1,9 @@
 'use client'
 
 import { Text, Title } from '@mantine/core'
-import classes from './Welcome.module.css'
+
 import { LeadGrid } from '../LeadGrid/LeadGrid'
+import classes from './Welcome.module.css'
 
 export function Welcome() {
     return (
@@ -19,17 +20,9 @@ export function Welcome() {
                 </Text>
             </Title>
 
-            <Text
-                c="dimmed"
-                ta="center"
-                size="lg"
-                p="24"
-                maw={580}
-                mx="auto"
-                mt="xl"
-            >
-                where style meets precision. Step into a world of expert
-                grooming and personalized service that caters to the modern man.
+            <Text c="dimmed" ta="center" size="lg" p="24" maw={580} mx="auto" mt="xl">
+                where style meets precision. Step into a world of expert grooming and personalized
+                service that caters to the modern man.
             </Text>
 
             <LeadGrid />

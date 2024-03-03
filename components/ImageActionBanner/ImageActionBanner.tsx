@@ -1,5 +1,6 @@
 import { Button, Card, Overlay, Text } from '@mantine/core'
 import Link from 'next/link'
+
 import classes from './ImageActionBanner.module.css'
 
 export function ImageActionBanner() {
@@ -13,17 +14,12 @@ export function ImageActionBanner() {
                 </Text>
 
                 <Text size="sm" className={classes.description}>
-                    Save up to 25% at Fifth Season Hotels in Europe, the Middle
-                    East, Africa and Asia Pacific
+                    Save up to 25% at Fifth Season Hotels in Europe, the Middle East, Africa and
+                    Asia Pacific
                 </Text>
 
                 <Link href="/appointments/new">
-                    <Button
-                        className={classes.action}
-                        variant="white"
-                        color="dark"
-                        size="xs"
-                    >
+                    <Button className={classes.action} variant="white" color="dark" size="xs">
                         Book now
                     </Button>
                 </Link>

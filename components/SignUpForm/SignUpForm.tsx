@@ -13,13 +13,7 @@ import { useForm } from '@mantine/form'
 import { IconCheck, IconX } from '@tabler/icons-react'
 import { useState } from 'react'
 
-function PasswordRequirement({
-    meets,
-    label,
-}: {
-    meets: boolean
-    label: string
-}) {
+function PasswordRequirement({ meets, label }: { meets: boolean; label: string }) {
     return (
         <Text
             c={meets ? 'teal' : 'red'}
@@ -75,10 +69,8 @@ export default function SignUpForm() {
 
         // functions will be used to validate values at corresponding key
         validate: {
-            name: (val: string) =>
-                val.length < 2 ? 'Name must have at least 2 letters' : null,
-            email: (val: string) =>
-                /^\S+@\S+$/.test(val) ? null : 'Invalid email',
+            name: (val: string) => (val.length < 2 ? 'Name must have at least 2 letters' : null),
+            email: (val: string) => (/^\S+@\S+$/.test(val) ? null : 'Invalid email'),
         },
     })
 
@@ -119,19 +111,12 @@ export default function SignUpForm() {
                                 label="Choose a strong password"
                                 placeholder="Your password"
                                 value={value}
-                                onChange={(event) =>
-                                    setValue(event.currentTarget.value)
-                                }
+                                onChange={(event) => setValue(event.currentTarget.value)}
                             />
                         </div>
                     </Popover.Target>
                     <Popover.Dropdown>
-                        <Progress
-                            color={color}
-                            value={strength}
-                            size={5}
-                            mb="xs"
-                        />
+                        <Progress color={color} value={strength} size={5} mb="xs" />
                         <PasswordRequirement
                             label="Includes at least 8 characters"
                             meets={value.length > 7}

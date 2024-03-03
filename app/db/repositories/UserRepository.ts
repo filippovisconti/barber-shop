@@ -1,7 +1,7 @@
 import { eq } from 'drizzle-orm'
-import { NewUser, User, users } from '../schema'
 
 import { db } from '../db'
+import { NewUser, User, users } from '../schema'
 
 export default class UserRepository {
     public static async getAll(): Promise<User[]> {
@@ -14,8 +14,7 @@ export default class UserRepository {
     }
     public static async updateById(id: string, data: User): Promise<void> {
         if (id) await db.update(users).set(data).where(eq(users.id, id))
-        else if (data.id)
-            db.update(users).set(data).where(eq(users.id, data.id))
+        else if (data.id) db.update(users).set(data).where(eq(users.id, data.id))
         else throw new Error('No id or data.id provided')
     }
 
@@ -36,10 +35,7 @@ export default class UserRepository {
         } else throw new Error('No id provided')
     }
 
-    public static async getByField(
-        field: string,
-        value: string
-    ): Promise<User[]> {
+    public static async getByField(field: string, value: string): Promise<User[]> {
         if (field && value) {
             const result: Promise<User[]> = db.query.users
                 .findMany({ where: eq(users[field as keyof User], value) })

@@ -1,6 +1,7 @@
 'use client'
 
 import { Box } from '@mantine/core'
+
 import { AuthenticationForm } from '../AuthenticationForm/AuthenticationForm'
 
 export default function LoginForm() {

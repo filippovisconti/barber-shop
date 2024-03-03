@@ -1,7 +1,7 @@
 'use client'
 
-import { Center, Container, Title } from '@mantine/core'
 import { GetInTouch } from '@/components/GetInTouch/GetInTouch'
+import { Center, Container, Title } from '@mantine/core'
 
 const page = () => (
     <main>

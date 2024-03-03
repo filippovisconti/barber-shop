@@ -38,9 +38,7 @@ export default function WholeForm(props: {
         name: 'new-appointment-form',
         initialValues: {
             name: session ? session.user?.name ?? 'ERROR NAME' : 'Jon Doe',
-            email: session
-                ? session.user?.email ?? 'ERROR EMAIL'
-                : 'jon@me.com',
+            email: session ? session.user?.email ?? 'ERROR EMAIL' : 'jon@me.com',
             service: chosen_service ?? 'Haircut',
             location: '',
             date: timestamp,
@@ -51,8 +49,7 @@ export default function WholeForm(props: {
         validate: {
             name: (value: string) =>
                 value.length < 2 ? 'Name must have at least 2 letters' : null,
-            email: (value: string) =>
-                /^\S+@\S+$/.test(value) ? null : 'Invalid email',
+            email: (value: string) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
             location: (value: string) =>
                 props.locations.map((location) => location.name).includes(value)
                     ? null
@@ -67,15 +64,8 @@ export default function WholeForm(props: {
     })
     const ref = useRef<HTMLInputElement>(null)
     const pickerControl = (
-        <ActionIcon
-            variant="subtle"
-            color="gray"
-            onClick={() => ref.current?.showPicker()}
-        >
-            <IconClock
-                style={{ width: rem(16), height: rem(16) }}
-                stroke={1.5}
-            />
+        <ActionIcon variant="subtle" color="gray" onClick={() => ref.current?.showPicker()}>
+            <IconClock style={{ width: rem(16), height: rem(16) }} stroke={1.5} />
         </ActionIcon>
     )
     const form_items = (

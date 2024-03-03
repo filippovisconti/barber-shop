@@ -1,12 +1,8 @@
-import { type NextRequest } from 'next/server'
 import AppointmentRepository from '@/app/db/repositories/AppointmentRepository'
 import { NewAppointment } from '@/app/db/schema'
+import { type NextRequest } from 'next/server'
 
-function addHoursAndMinutes(
-    date: string | Date,
-    hours: number,
-    minutes: number
-): Date {
+function addHoursAndMinutes(date: string | Date, hours: number, minutes: number): Date {
     const dateCopy = new Date(date)
     dateCopy.setHours(dateCopy.getHours() + hours)
     dateCopy.setMinutes(dateCopy.getMinutes() + minutes)
@@ -43,26 +39,17 @@ export async function POST(request: NextRequest) {
     const appointment: NewAppointment = {
         serviceId: service,
         locationId: location,
-        date: addHoursAndMinutes(
-            date,
-            parseInt(time_parts[0]),
-            parseInt(time_parts[1])
-        ),
+        date: addHoursAndMinutes(date, parseInt(time_parts[0]), parseInt(time_parts[1])),
         userEmail: email,
         status: 'confirmed',
         notes: notes,
     }
     try {
-        const { id: new_appointment_id } = (
-            await AppointmentRepository.insert(appointment)
-        )[0]
+        const { id: new_appointment_id } = (await AppointmentRepository.insert(appointment))[0]
         console.log(appointment, new_appointment_id)
         return Response.json({ id: new_appointment_id })
     } catch (error) {
         console.error('[error] failed creating appointment', error)
-        return Response.json(
-            { error: 'failed, no appointmnet created' },
-            { status: 400 }
-        )
+        return Response.json({ error: 'failed, no appointmnet created' }, { status: 400 })
     }
 }

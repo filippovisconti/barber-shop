@@ -1,6 +1,6 @@
-import attributes from './attributes.json'
 import { StoryWrapper } from '../StoryWrapper/StoryWrapper'
 import { ContactUs } from './ContactUs'
+import attributes from './attributes.json'
 
 export default { title: 'ContactUs' }
 

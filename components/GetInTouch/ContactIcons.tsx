@@ -1,20 +1,15 @@
 import { Box, Stack, Text, rem } from '@mantine/core'
 import { IconAt, IconMapPin, IconPhone, IconSun } from '@tabler/icons-react'
+
 import classes from './ContactIcons.module.css'
 
-interface ContactIconProps
-    extends Omit<React.ComponentPropsWithoutRef<'div'>, 'title'> {
+interface ContactIconProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'title'> {
     icon: typeof IconSun
     title: React.ReactNode
     description: React.ReactNode
 }
 
-function ContactIcon({
-    icon: Icon,
-    title,
-    description,
-    ...others
-}: ContactIconProps) {
+function ContactIcon({ icon: Icon, title, description, ...others }: ContactIconProps) {
     return (
         <div className={classes.wrapper} {...others}>
             <Box mr="md">
@@ -43,8 +38,6 @@ const MOCKDATA = [
 ]
 
 export function ContactIconsList() {
-    const items = MOCKDATA.map((item, index) => (
-        <ContactIcon key={index} {...item} />
-    ))
+    const items = MOCKDATA.map((item, index) => <ContactIcon key={index} {...item} />)
     return <Stack>{items}</Stack>
 }

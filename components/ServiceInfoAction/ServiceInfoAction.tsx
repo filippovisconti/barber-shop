@@ -1,6 +1,6 @@
+import { Service } from '@/app/db/schema'
 import { Avatar, Button, Paper, Text } from '@mantine/core'
 import Link from 'next/link'
-import { Service } from '@/app/db/schema'
 
 export function ServiceInfoAction(props: { service: Service }) {
     return (

@@ -1,7 +1,7 @@
 'use client'
 
-import { Anchor, Badge, Button, Card, Group, Image, Text } from '@mantine/core'
 import { Location } from '@/app/db/schema'
+import { Anchor, Badge, Button, Card, Group, Image, Text } from '@mantine/core'
 
 function GenerateCard(location: Location) {
     const opens: String = `${new Date(location.openingAt).getHours().toString().padStart(2, '0')}:${new Date(location.openingAt).getMinutes().toString().padEnd(2, '0')}`

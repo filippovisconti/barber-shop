@@ -1,11 +1,6 @@
 'use client'
 
-import {
-    ActionIcon,
-    useComputedColorScheme,
-    useMantineColorScheme,
-} from '@mantine/core'
-
+import { ActionIcon, useComputedColorScheme, useMantineColorScheme } from '@mantine/core'
 import { MoonIcon, SunIcon } from '@modulz/radix-icons'
 
 export function ColorSchemeToggle() {

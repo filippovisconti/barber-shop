@@ -1,26 +1,16 @@
 'use client'
 
-import {
-    Box,
-    Burger,
-    Button,
-    Divider,
-    Drawer,
-    Group,
-    ScrollArea,
-    rem,
-} from '@mantine/core'
+import { ColorSchemeToggle } from '@/components/ColorSchemeToggle/ColorSchemeToggle'
+import { Box, Burger, Button, Divider, Drawer, Group, ScrollArea, rem } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { MantineLogo } from '@mantinex/mantine-logo'
-import Link from 'next/link'
 import { useSession } from 'next-auth/react'
+import Link from 'next/link'
+
 import classes from './Header.module.css'
 
-import { ColorSchemeToggle } from '@/components/ColorSchemeToggle/ColorSchemeToggle'
-
 export function HeaderMegaMenu() {
-    const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
-        useDisclosure(false)
+    const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false)
     const { data: session } = useSession()
 
     const links = [
@@ -70,11 +60,7 @@ export function HeaderMegaMenu() {
                         {login_signup}
                         <ColorSchemeToggle />
                     </Group>
-                    <Burger
-                        opened={drawerOpened}
-                        onClick={toggleDrawer}
-                        hiddenFrom="sm"
-                    />
+                    <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
                 </Group>
             </header>
 

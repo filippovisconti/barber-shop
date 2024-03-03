@@ -1,7 +1,7 @@
 import { eq } from 'drizzle-orm'
-import { NewService, Service, services } from '../schema'
 
 import { db } from '../db'
+import { NewService, Service, services } from '../schema'
 
 export default class ServiceRepository {
     public static async getAll(): Promise<Service[]> {
@@ -16,8 +16,7 @@ export default class ServiceRepository {
 
     public static async updateById(id: string, data: Service): Promise<void> {
         if (id) db.update(services).set(data).where(eq(services.id, id))
-        else if (data.id)
-            db.update(services).set(data).where(eq(services.id, data.id))
+        else if (data.id) db.update(services).set(data).where(eq(services.id, data.id))
         else throw new Error('No id or data.id provided')
     }
 
@@ -38,10 +37,7 @@ export default class ServiceRepository {
         } else throw new Error('No id provided')
     }
 
-    public static async getByField(
-        field: string,
-        value: string
-    ): Promise<Service[]> {
+    public static async getByField(field: string, value: string): Promise<Service[]> {
         if (field && value) {
             const result: Promise<Service[]> = db.query.services
                 .findMany({

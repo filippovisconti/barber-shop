@@ -1,6 +1,6 @@
+import { Appointment } from '@/app/db/schema'
 import { Avatar, Button, Paper, Text, Title } from '@mantine/core'
 import Link from 'next/link'
-import { Appointment } from '@/app/db/schema'
 
 export function AppointmentInfoAction(props: { appointment: Appointment }) {
     return (

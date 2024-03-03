@@ -1,6 +1,7 @@
 import { Button, Image, Text, TextInput, Title } from '@mantine/core'
-import image from './image.svg'
+
 import classes from './EmailBanner.module.css'
+import image from './image.svg'
 
 export function EmailBanner() {
     return (
@@ -11,9 +12,8 @@ export function EmailBanner() {
                     Subscribe to our newsletter!
                 </Text>
                 <Text fz="sm" c="dimmed">
-                    You will never miss important product updates, latest news
-                    and community QA sessions. Our newsletter is once a week,
-                    every Sunday.
+                    You will never miss important product updates, latest news and community QA
+                    sessions. Our newsletter is once a week, every Sunday.
                 </Text>
 
                 <div className={classes.controls}>

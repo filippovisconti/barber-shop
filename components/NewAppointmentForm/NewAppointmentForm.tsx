@@ -1,7 +1,7 @@
 // server component
-import { Box, Title } from '@mantine/core'
 import WholeForm from '@/app/appointments/new/client'
 import { Location, Service } from '@/app/db/schema'
+import { Box, Title } from '@mantine/core'
 import { redirect } from 'next/navigation'
 
 export interface FormValues {
@@ -15,8 +15,7 @@ export interface FormValues {
 }
 
 async function getLocations() {
-    if (!process.env.BASE_URL)
-        throw new Error('BASE_URL environment variable is required.')
+    if (!process.env.BASE_URL) throw new Error('BASE_URL environment variable is required.')
     const res = await fetch(`${process.env.BASE_URL}/api/locations`, {
         cache: 'no-store',
     })
@@ -24,8 +23,7 @@ async function getLocations() {
 }
 
 async function getServices() {
-    if (!process.env.BASE_URL)
-        throw new Error('BASE_URL environment variable is required.')
+    if (!process.env.BASE_URL) throw new Error('BASE_URL environment variable is required.')
     const res = await fetch(`${process.env.BASE_URL}/api/services`, {
         cache: 'no-store',
     })
@@ -41,8 +39,7 @@ export default async function NewAppointmentForm() {
     const createAppointment = async (formData: FormData) => {
         'use server'
 
-        if (!process.env.BASE_URL)
-            throw new Error('BASE_URL environment variable is required.')
+        if (!process.env.BASE_URL) throw new Error('BASE_URL environment variable is required.')
         const url: URL = new URL('/api/appointments/new', process.env.BASE_URL)
         await fetch(url, {
             method: 'POST',
@@ -50,13 +47,8 @@ export default async function NewAppointmentForm() {
         }).then(async (response) => {
             if (response.ok) {
                 const json = await response.json()
-                const appoinment: { id: string } = JSON.parse(
-                    JSON.stringify(json)
-                )
-                console.log(
-                    'Success: appointment created with id',
-                    appoinment.id
-                )
+                const appoinment: { id: string } = JSON.parse(JSON.stringify(json))
+                console.log('Success: appointment created with id', appoinment.id)
                 redirect(`/appointments/${appoinment.id}`)
             } else {
                 throw new Error(`HTTP error! status: ${response.body}`)

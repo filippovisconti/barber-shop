@@ -8,11 +8,8 @@ import {
     Textarea,
     Title,
 } from '@mantine/core'
-import {
-    IconBrandInstagram,
-    IconBrandTwitter,
-    IconBrandYoutube,
-} from '@tabler/icons-react'
+import { IconBrandInstagram, IconBrandTwitter, IconBrandYoutube } from '@tabler/icons-react'
+
 import { ContactIconsList } from './ContactIcons'
 import classes from './ContactUs.module.css'
 
@@ -20,12 +17,7 @@ const social = [IconBrandTwitter, IconBrandYoutube, IconBrandInstagram]
 
 export function ContactUs() {
     const icons = social.map((Icon, index) => (
-        <ActionIcon
-            key={index}
-            size={28}
-            className={classes.social}
-            variant="transparent"
-        >
+        <ActionIcon key={index} size={28} className={classes.social} variant="transparent">
             <Icon size="1.4rem" stroke={1.5} />
         </ActionIcon>
     ))
@@ -36,8 +28,8 @@ export function ContactUs() {
                 <div>
                     <Title className={classes.title}>Reach out</Title>
                     <Text className={classes.description} mt="sm" mb={30}>
-                        Leave your email and we will get back to you as soon as
-                        possible, or call us right away!
+                        Leave your email and we will get back to you as soon as possible, or call us
+                        right away!
                     </Text>
 
                     <ContactIconsList />
@@ -76,9 +68,7 @@ export function ContactUs() {
                     />
 
                     <Group justify="flex-end" mt="md">
-                        <Button className={classes.control}>
-                            Send message
-                        </Button>
+                        <Button className={classes.control}>Send message</Button>
                     </Group>
                 </div>
             </SimpleGrid>

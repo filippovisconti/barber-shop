@@ -8,10 +8,7 @@ export async function GET(request: NextRequest) {
     const queried_uuid = searchParams.get('uuid')
 
     if (queried_name) {
-        const found_user: User[] = await UserRepository.getByField(
-            'name',
-            queried_name
-        )
+        const found_user: User[] = await UserRepository.getByField('name', queried_name)
         return Response.json(found_user[0].id)
     }
 

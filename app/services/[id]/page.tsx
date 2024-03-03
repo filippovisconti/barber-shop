@@ -1,10 +1,9 @@
-import { Box, Center, Container } from '@mantine/core'
 import { Service } from '@/app/db/schema'
 import { ServiceInfoAction } from '@/components/ServiceInfoAction/ServiceInfoAction'
+import { Box, Center, Container } from '@mantine/core'
 
 async function getData(id: string): Promise<string> {
-    if (!process.env.BASE_URL)
-        throw new Error('BASE_URL environment variable is required.')
+    if (!process.env.BASE_URL) throw new Error('BASE_URL environment variable is required.')
     if (!id) throw new Error('id in getData is required.')
     const url: URL = new URL(`/api/services/${id}`, process.env.BASE_URL)
     const res = await fetch(url, { cache: 'no-store' })

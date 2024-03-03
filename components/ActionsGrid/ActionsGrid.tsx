@@ -19,6 +19,7 @@ import {
     IconRepeat,
     IconReport,
 } from '@tabler/icons-react'
+
 import classes from './ActionsGrid.module.css'
 
 const mockdata = [
@@ -53,12 +54,7 @@ export function ActionsGrid() {
         <Card withBorder radius="md" className={classes.card}>
             <Group justify="space-between">
                 <Text className={classes.title}>Services</Text>
-                <Anchor
-                    size="xs"
-                    c="dimmed"
-                    style={{ lineHeight: 1 }}
-                    href="/services"
-                >
+                <Anchor size="xs" c="dimmed" style={{ lineHeight: 1 }} href="/services">
                     + 21 other services
                 </Anchor>
             </Group>

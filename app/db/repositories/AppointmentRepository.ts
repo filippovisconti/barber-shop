@@ -1,7 +1,7 @@
 import { eq } from 'drizzle-orm'
-import { Appointment, NewAppointment, appointments } from '../schema'
 
 import { db } from '../db'
+import { Appointment, NewAppointment, appointments } from '../schema'
 
 export default class AppointmentRepository {
     public static async getAll(): Promise<Appointment[]> {
@@ -9,34 +9,19 @@ export default class AppointmentRepository {
         return result
     }
 
-    public static async insert(
-        data: NewAppointment
-    ): Promise<{ id: string }[]> {
+    public static async insert(data: NewAppointment): Promise<{ id: string }[]> {
         if (data) {
             try {
-                return await db
-                    .insert(appointments)
-                    .values(data)
-                    .returning({ id: appointments.id })
+                return await db.insert(appointments).values(data).returning({ id: appointments.id })
             } catch (error) {
                 throw new Error(`Error inserting appointment: ${error}`)
             }
         } else throw new Error('No appointment data provided')
     }
 
-    public static async updateById(
-        id: string,
-        data: Appointment
-    ): Promise<void> {
-        if (id)
-            await db
-                .update(appointments)
-                .set(data)
-                .where(eq(appointments.id, id))
-        else if (data.id)
-            db.update(appointments)
-                .set(data)
-                .where(eq(appointments.id, data.id))
+    public static async updateById(id: string, data: Appointment): Promise<void> {
+        if (id) await db.update(appointments).set(data).where(eq(appointments.id, id))
+        else if (data.id) db.update(appointments).set(data).where(eq(appointments.id, data.id))
         else throw new Error('No id or data.id provided')
     }
 
@@ -47,10 +32,9 @@ export default class AppointmentRepository {
 
     public static async getById(id: string): Promise<Appointment> {
         if (id) {
-            const result: Promise<Appointment | undefined> =
-                db.query.appointments
-                    .findFirst({ where: eq(appointments.id, id) })
-                    .execute()
+            const result: Promise<Appointment | undefined> = db.query.appointments
+                .findFirst({ where: eq(appointments.id, id) })
+                .execute()
 
             // if type of result is not undefined, return result
             if (result) return result as Promise<Appointment>
@@ -58,10 +42,7 @@ export default class AppointmentRepository {
         } else throw new Error('No id provided')
     }
 
-    public static async getByField(
-        field: string,
-        value: string
-    ): Promise<Appointment[]> {
+    public static async getByField(field: string, value: string): Promise<Appointment[]> {
         if (field && value) {
             const result: Promise<Appointment[]> = db.query.appointments
                 .findMany({
