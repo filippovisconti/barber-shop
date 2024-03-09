@@ -14,7 +14,7 @@ export default function AppointmentTable(props: { appointments: JoinAppointment[
             <Table.Td>{moment(element.date).format('dddd, MMMM Do YYYY, h:mm a')}</Table.Td>
             <Table.Td>{moment(element.date).format('MM/DD/YYYY')}</Table.Td>
             <Table.Td>{element.status}</Table.Td>
-            <Table.Td>{element.notes == "" ? '-' : element.notes}</Table.Td>
+            <Table.Td>{!element.notes ? '-' : element.notes}</Table.Td>
         </Table.Tr>
     ))
 

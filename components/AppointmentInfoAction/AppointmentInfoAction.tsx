@@ -1,8 +1,13 @@
-import { Appointment } from '@/app/db/schema'
+import { Appointment, Location, Service } from '@/app/db/schema'
 import { Avatar, Button, Paper, Text, Title } from '@mantine/core'
+import moment from 'moment'
 import Link from 'next/link'
 
-export function AppointmentInfoAction(props: { appointment: Appointment }) {
+export function AppointmentInfoAction(props: {
+    appointment: Appointment
+    service: Service
+    location: Location
+}) {
     return (
         <>
             <Title order={1} pb="40">
@@ -17,21 +22,21 @@ export function AppointmentInfoAction(props: { appointment: Appointment }) {
                     mx="auto"
                 />
                 <Text ta="center" fz="xl" fw={500} mt="md">
-                    {props.appointment.date.toString()}
+                    {moment(props.appointment.date).format('dddd, MMMM Do YYYY, h:mm a')}
                 </Text>
                 <Text ta="center" c="dimmed" py="15" fz="sm">
-                    {props.appointment.locationId}
+                    {props.location.name}
                 </Text>
                 <Text ta="center" fz="sm">
-                    {props.appointment.serviceId} minutes
+                    {props.service.duration} minutes
                 </Text>
                 <Text ta="center" fz="sm">
-                    {props.appointment.serviceId} €
+                    {props.service.price} €
                 </Text>
 
-                <Link href="/appointments/new">
+                <Link href="#">
                     <Button variant="default" fullWidth mt="md">
-                        Book now!
+                        Edit!
                     </Button>
                 </Link>
             </Paper>
