@@ -1,9 +1,36 @@
 import { eq } from 'drizzle-orm'
 
 import { db } from '../db'
-import { Appointment, NewAppointment, appointments } from '../schema'
+import {
+    Appointment,
+    JoinAppointment,
+    NewAppointment,
+    appointments,
+    locations,
+    services,
+} from '../schema'
 
 export default class AppointmentRepository {
+    public static async getAppointmentsJoin(): Promise<JoinAppointment[]> {
+        // inner join: no null values allowed
+        const result: JoinAppointment[] = await db
+            .select({
+                id: appointments.id,
+                userEmail: appointments.userEmail,
+                serviceName: services.name,
+                locationName: locations.name,
+                date: appointments.date,
+                notes: appointments.notes,
+                createdAt: appointments.createdAt,
+                status: appointments.status,
+            })
+            .from(appointments)
+            .innerJoin(services, eq(appointments.serviceId, services.id))
+            .innerJoin(locations, eq(appointments.locationId, locations.id))
+
+        return Promise.resolve(result)
+    }
+
     public static async getAll(): Promise<Appointment[]> {
         const result: Promise<Appointment[]> = db.query.appointments.findMany()
         return result

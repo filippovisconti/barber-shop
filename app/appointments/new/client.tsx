@@ -68,7 +68,7 @@ export default function WholeForm(props: {
             <IconClock style={{ width: rem(16), height: rem(16) }} stroke={1.5} />
         </ActionIcon>
     )
-    const formItems= (
+    const formItems = (
         <>
             <Box p="10">
                 <Title py="20" order={3}>

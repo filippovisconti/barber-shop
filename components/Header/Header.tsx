@@ -29,6 +29,9 @@ export function HeaderMegaMenu() {
         <Link key="4" href="/appointments/new" className={classes.link}>
             Schedule Appointment
         </Link>,
+        <Link key="5" href="/appointments" className={classes.link}>
+            All appointments
+        </Link>,
     ]
 
     const loginSignupItem = (
