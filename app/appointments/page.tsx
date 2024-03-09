@@ -39,4 +39,3 @@ export default async function Page() {
         </main>
     )
 }
-// return <Container>List of all appointments</Container>

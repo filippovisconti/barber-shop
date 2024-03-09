@@ -4401,7 +4401,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tabler/icons-react@npm:^2.40.0":
+"@tabler/icons-react@npm:^2.47.0":
   version: 2.47.0
   resolution: "@tabler/icons-react@npm:2.47.0"
   dependencies:
@@ -12040,7 +12040,7 @@ __metadata:
     "@storybook/blocks": "npm:^7.5.2"
     "@storybook/nextjs": "npm:^7.5.2"
     "@storybook/react": "npm:^7.5.2"
-    "@tabler/icons-react": "npm:^2.40.0"
+    "@tabler/icons-react": "npm:^2.47.0"
     "@testing-library/dom": "npm:^9.3.3"
     "@testing-library/jest-dom": "npm:^6.1.4"
     "@testing-library/react": "npm:^14.2.1"
