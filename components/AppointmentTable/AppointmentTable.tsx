@@ -12,10 +12,11 @@ export default function AppointmentTable(props: { appointments: JoinAppointment[
             <Table.Td>{element.userEmail}</Table.Td>
             <Table.Td>{element.serviceName}</Table.Td>
             <Table.Td>{element.locationName}</Table.Td>
-            <Table.Td>{moment(element.date).format('dddd, MMMM Do YYYY, h:mm a')}</Table.Td>
-            <Table.Td>{moment(element.date).format('MM/DD/YYYY')}</Table.Td>
+            <Table.Td>{moment(element.date).format('dddd, MMMM Do YYYY')}</Table.Td>
+            <Table.Td>{moment(element.date).format('h:mm a')}</Table.Td>
+            {/* <Table.Td>{moment(element.date).format('MM/DD/YYYY')}</Table.Td> */}
             <Table.Td>{element.status}</Table.Td>
-            <Table.Td>{!element.notes ? '-' : element.notes}</Table.Td>
+            {/* <Table.Td>{!element.notes ? '-' : element.notes}</Table.Td> */}
             <Table.Td>
                 <Link href="#">
                     <Button
@@ -53,9 +54,10 @@ export default function AppointmentTable(props: { appointments: JoinAppointment[
                         <Table.Th>Service</Table.Th>
                         <Table.Th>Location</Table.Th>
                         <Table.Th>Date</Table.Th>
-                        <Table.Th>Created at</Table.Th>
+                        <Table.Th>Time</Table.Th>
+                        {/* <Table.Th>Created at</Table.Th> */}
                         <Table.Th>Status</Table.Th>
-                        <Table.Th>Notes</Table.Th>
+                        {/* <Table.Th>Notes</Table.Th> */}
                         <Table.Th></Table.Th>
                     </Table.Tr>
                 </Table.Thead>
