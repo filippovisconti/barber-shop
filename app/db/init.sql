@@ -1,7 +1,5 @@
 -- Adminer 4.8.1 PostgreSQL 16.2 (Debian 16.2-1.pgdg120+2) dump
 
-\connect "shop";
-
 DROP TABLE IF EXISTS "account";
 CREATE TABLE "public"."account" (
     "userId" text NOT NULL,
