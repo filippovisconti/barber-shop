@@ -55,7 +55,10 @@ export default class AppointmentRepository {
     public static async delete(id: string): Promise<{ deletedId: string }[]> {
         if (id)
             try {
-                return await db.delete(appointments).where(eq(appointments.id, id)).returning({ deletedId: appointments.id })
+                return await db
+                    .delete(appointments)
+                    .where(eq(appointments.id, id))
+                    .returning({ deletedId: appointments.id })
             } catch (error) {
                 throw new Error(`Error deleting appointment: ${error}`)
             }

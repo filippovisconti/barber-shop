@@ -21,7 +21,10 @@ export default async function Page() {
 
     const tableAndBanner = (
         <Box miw={{ base: 200, sm: 500, md: 600 }} py="20">
-            <AppointmentTable appointments={appointments} deleteAppointmentUrl={getDeleteAppointmentUrl()} />
+            <AppointmentTable
+                appointments={appointments}
+                deleteAppointmentUrl={getDeleteAppointmentUrl()}
+            />
         </Box>
     )
 

@@ -6,9 +6,8 @@ import '@mantine/dates/styles.css'
 import React from 'react'
 
 import { theme } from '../theme'
-import { Providers } from './provider'
-
 import './global.css'
+import { Providers } from './provider'
 
 export const metadata = {
     title: 'Barber Shop Name',
@@ -17,8 +16,6 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }: { children: any }) {
-
-
     return (
         <html lang="en">
             <head>
