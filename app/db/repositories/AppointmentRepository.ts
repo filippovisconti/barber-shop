@@ -52,8 +52,13 @@ export default class AppointmentRepository {
         else throw new Error('No id or data.id provided')
     }
 
-    public static async delete(id: string): Promise<void> {
-        if (id) await db.delete(appointments).where(eq(appointments.id, id))
+    public static async delete(id: string): Promise<{ deletedId: string }[]> {
+        if (id)
+            try {
+                return await db.delete(appointments).where(eq(appointments.id, id)).returning({ deletedId: appointments.id })
+            } catch (error) {
+                throw new Error(`Error deleting appointment: ${error}`)
+            }
         else throw new Error('No id provided')
     }
 
