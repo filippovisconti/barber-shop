@@ -51,19 +51,21 @@ export function HeaderMegaMenu() {
         </>
     )
 
+    const responsiveCutOff = 'xl'
+
     return (
         <Box pb={120}>
             <header className={classes.header}>
                 <Group justify="space-between" h="100%">
                     <MantineLogo size={30} />
-                    <Group h="100%" gap={0} visibleFrom="sm">
+                    <Group h="100%" gap={0} visibleFrom={responsiveCutOff}>
                         {links}
                     </Group>
-                    <Group visibleFrom="sm">
+                    <Group visibleFrom={responsiveCutOff}>
                         {loginSignupItem}
                         <ColorSchemeToggle />
                     </Group>
-                    <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
+                    <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom={responsiveCutOff} />
                 </Group>
             </header>
 
@@ -73,7 +75,7 @@ export function HeaderMegaMenu() {
                 size="100%"
                 padding="md"
                 title="Navigation"
-                hiddenFrom="sm"
+                hiddenFrom={responsiveCutOff}
                 zIndex={1000000}
             >
                 <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
