@@ -1,0 +1,22 @@
+.content {
+    min-height: 100vh;
+    position: relative;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    backdrop-filter: blur(4px);
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    backdrop-filter: blur(4px);
+}
+
+.main-body {
+    padding-bottom: 160px
+}

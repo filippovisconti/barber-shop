@@ -8,6 +8,8 @@ import React from 'react'
 import { theme } from '../theme'
 import { Providers } from './provider'
 
+import './global.css'
+
 export const metadata = {
     title: 'Barber Shop Name',
     description:
@@ -15,18 +17,11 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }: { children: any }) {
-    const stickyFooter =
-        '.content{min-height: 100vh;position: relative;  } footer { position: fixed; bottom: 0; width: 100%; backdrop-filter: blur(4px);}'
 
-    const padBody = '.main-body {padding-bottom:160px}'
 
     return (
         <html lang="en">
             <head>
-                <style>
-                    {stickyFooter}
-                    {padBody}
-                </style>
                 <ColorSchemeScript defaultColorScheme="auto" />
                 <link rel="shortcut icon" href="/favicon.svg" />
                 <meta
