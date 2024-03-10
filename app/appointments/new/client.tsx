@@ -117,12 +117,12 @@ export default function WholeForm(props: {
             <Box p="10">
                 <Center>
                     <Image
-                        src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-9.png"
+                        src={session?.user?.image ?? 'https://placehold.co/600x400?text=Placeholder'}
                         fallbackSrc="https://placehold.co/600x400?text=Placeholder"
-                        h={150}
+                        h={200}
                         w="auto"
                         fit="contain"
-                        radius="md"
+                        radius="100"
                         alt="Customer"
                     />
                 </Center>
@@ -152,7 +152,7 @@ export default function WholeForm(props: {
                     </>
                 ) : (
                     <>
-                        <Center py="40"> Already logged in </Center>
+                        <Center py="40"> Already logged in, {session?.user?.name}! </Center>
                         <input
                             type="hidden"
                             name="name"
