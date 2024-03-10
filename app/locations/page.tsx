@@ -17,7 +17,7 @@ export default async function Page() {
         <main>
             <Container p="20">
                 <Center>
-                    <Title item-center order={1}>
+                    <Title order={1}>
                         Find us!
                     </Title>
                 </Center>

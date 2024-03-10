@@ -7,12 +7,12 @@ function GenerateCard(location: Location) {
     const opens: string = `${new Date(location.openingAt).getHours().toString().padStart(2, '0')}:${new Date(location.openingAt).getMinutes().toString().padEnd(2, '0')}`
     const closes: string = `${new Date(location.closingAt).getHours().toString().padStart(2, '0')}:${new Date(location.closingAt).getMinutes().toString().padEnd(2, '0')}`
     return (
-        <Card shadow="sm" padding="lg" radius="md" withBorder>
+        <Card key={location.id} shadow="sm" padding="lg" radius="md" withBorder>
             <Card.Section>
                 <Image
                     src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/images/bg-10.png"
                     height={160}
-                    alt="Norway"
+                    alt="Location image"
                 />
             </Card.Section>
 
