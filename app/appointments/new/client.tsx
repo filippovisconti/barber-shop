@@ -117,12 +117,12 @@ export default function WholeForm(props: {
             <Box p="10">
                 <Center>
                     <Image
-                        src={session?.user?.image ?? 'https://placehold.co/600x400?text=Placeholder'}
+                        src={session?.user?.image ?? 'https://upload.wikimedia.org/wikipedia/en/archive/b/b1/20210811084900%21Portrait_placeholder.png'}
                         fallbackSrc="https://placehold.co/600x400?text=Placeholder"
-                        h={200}
+                        h={session?.user?.image ? 200 : 100}
                         w="auto"
                         fit="contain"
-                        radius="100"
+                        radius={session?.user?.image ? "100" : "md"}
                         alt="Customer"
                     />
                 </Center>
@@ -168,6 +168,10 @@ export default function WholeForm(props: {
             </Box>
         </>
     )
+    const handleClick = (event) => {
+        event.currentTarget.disabled = true
+    }
+
     return (
         <form action={props.action}>
             <Group grow visibleFrom="sm">
@@ -175,7 +179,7 @@ export default function WholeForm(props: {
             </Group>
             <Box hiddenFrom="sm">{formItems}</Box>
 
-            <Box py="20" px="80">
+            <Box py="60" px="80">
                 <Textarea
                     name="notes"
                     label="Additional Notes"
