@@ -65,7 +65,11 @@ export function HeaderMegaMenu() {
                         {loginSignupItem}
                         <ColorSchemeToggle />
                     </Group>
-                    <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom={responsiveCutOff} />
+                    <Burger
+                        opened={drawerOpened}
+                        onClick={toggleDrawer}
+                        hiddenFrom={responsiveCutOff}
+                    />
                 </Group>
             </header>
 

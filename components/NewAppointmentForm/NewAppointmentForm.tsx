@@ -1,6 +1,6 @@
 // server component
-import WholeForm from '@/app/appointments/new/client'
 import { Location, Service } from '@/app/db/schema'
+import WholeForm from '@/components/NewAppointmentForm/client'
 import { Box, Title } from '@mantine/core'
 import { redirect } from 'next/navigation'
 

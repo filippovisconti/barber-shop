@@ -28,15 +28,15 @@ async function getLocation(id: string): Promise<string> {
 
 export default async function Page({ params }: { params: { id: string } }) {
     if (!params.id) throw new Error('No id found')
-    const raw_appointment: string = await getAppointment(params.id)
-    if (!raw_appointment) throw new Error('No data found')
-    const appointment: Appointment = JSON.parse(JSON.stringify(raw_appointment)) as Appointment
-    const raw_service: string = await getService(appointment.serviceId)
-    if (!raw_service) throw new Error('No data found')
-    const service: Service = JSON.parse(JSON.stringify(raw_service)) as Service
-    const raw_location: string = await getLocation(appointment.locationId)
-    if (!raw_location) throw new Error('No data found')
-    const location: Location = JSON.parse(JSON.stringify(raw_location)) as Location
+    const rawAppointment: string = await getAppointment(params.id)
+    if (!rawAppointment) throw new Error('No data found')
+    const appointment: Appointment = JSON.parse(JSON.stringify(rawAppointment)) as Appointment
+    const rawService: string = await getService(appointment.serviceId)
+    if (!rawService) throw new Error('No data found')
+    const service: Service = JSON.parse(JSON.stringify(rawService)) as Service
+    const rawLocation: string = await getLocation(appointment.locationId)
+    if (!rawLocation) throw new Error('No data found')
+    const location: Location = JSON.parse(JSON.stringify(rawLocation)) as Location
 
     return (
         <main>
