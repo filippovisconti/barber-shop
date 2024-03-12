@@ -47,10 +47,8 @@ export async function POST(request: NextRequest) {
     }
     try {
         const { id: newAppointmentId } = (await AppointmentRepository.insert(appointment))[0]
-        console.log(appointment, newAppointmentId)
         return Response.json({ id: newAppointmentId })
     } catch (error) {
-        console.error('[error] failed creating appointment', error)
         return Response.json({ error: 'failed, no appointmnet created' }, { status: 400 })
     }
 }
