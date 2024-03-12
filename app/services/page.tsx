@@ -1,7 +1,8 @@
 import { EmailBanner } from '@/components/EmailBanner/EmailBanner'
 import { ImageActionBanner } from '@/components/ImageActionBanner/ImageActionBanner'
 import ServiceTable from '@/components/ServiceTable/ServiceTable'
-import { Box, Container, Group, Space, Title } from '@mantine/core'
+import { Box, Button, Center, Container, Group, Space, Title } from '@mantine/core'
+import Link from 'next/link'
 
 import { Service } from '../db/schema'
 
@@ -37,6 +38,13 @@ export default async function Page() {
                     {tableAndBanner}
                 </Group>
                 <Box hiddenFrom="sm">{tableAndBanner}</Box>
+                <Center>
+                    <Link href="/services/new">
+                        <Button variant="filled" color="green">
+                            Add a new service
+                        </Button>
+                    </Link>
+                </Center>
                 <Space h="xl" />
                 <EmailBanner />
             </Container>
