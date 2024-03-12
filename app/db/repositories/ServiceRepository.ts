@@ -9,9 +9,14 @@ export default class ServiceRepository {
         return result
     }
 
-    public static async insert(data: NewService): Promise<void> {
-        if (data) db.insert(services).values(data)
-        else throw new Error('No service data provided')
+    public static async insert(data: NewService): Promise<{ id: string }[]> {
+        if (data) {
+            try {
+                return await db.insert(services).values(data).returning({ id: services.id })
+            } catch (error) {
+                throw new Error(`Error inserting service: ${error}`)
+            }
+        } else throw new Error('No service data provided')
     }
 
     public static async updateById(id: string, data: Service): Promise<void> {
