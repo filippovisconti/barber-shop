@@ -31,7 +31,7 @@ export function AppointmentInfoAction(props: {
                     {props.service.duration} minutes
                 </Text>
                 <Text ta="center" fz="sm">
-                    {props.service.price} €
+                    {props.service.price}€
                 </Text>
 
                 <Link href="#">

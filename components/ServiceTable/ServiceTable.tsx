@@ -13,8 +13,8 @@ export default function ServiceTable(props: { service_names: Service[] }) {
                 </Text>
             </Table.Td>
             <Table.Td>{element.description}</Table.Td>
-            <Table.Td>{element.price} €</Table.Td>
-            <Table.Td>{element.duration} &apos; </Table.Td>
+            <Table.Td>{element.price}€</Table.Td>
+            <Table.Td>{element.duration}&apos; </Table.Td>
         </Table.Tr>
     ))
 
