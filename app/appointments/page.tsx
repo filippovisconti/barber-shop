@@ -9,7 +9,7 @@ async function getData(): Promise<string> {
     const res = await fetch(url, { cache: 'no-store' })
     return res.json()
 }
-function getDeleteAppointmentUrl(): string {
+function getBaseUrl(): string {
     if (!process.env.BASE_URL) throw new Error('BASE_URL environment variable is required.')
     return process.env.BASE_URL
 }
@@ -21,10 +21,7 @@ export default async function Page() {
 
     const tableAndBanner = (
         <Box miw={{ base: 200, sm: 500, md: 600 }} py="20">
-            <AppointmentTable
-                appointments={appointments}
-                deleteAppointmentUrl={getDeleteAppointmentUrl()}
-            />
+            <AppointmentTable appointments={appointments} baseUrl={getBaseUrl()} />
         </Box>
     )
 

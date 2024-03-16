@@ -16,7 +16,7 @@ async function deleteAppointment(id: string, baseUrl: string) {
 
 export default function AppointmentTable(props: {
     appointments: JoinAppointment[]
-    deleteAppointmentUrl: string
+    baseUrl: string
 }) {
     const [opened, { open, close }] = useDisclosure(false)
     const router = useRouter()

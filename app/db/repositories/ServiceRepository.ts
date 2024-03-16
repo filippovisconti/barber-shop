@@ -25,9 +25,19 @@ export default class ServiceRepository {
         else throw new Error('No id or data.id provided')
     }
 
-    public static async delete(id: string): Promise<void> {
-        if (id) db.delete(services).where(eq(services.id, id))
-        else throw new Error('No id provided')
+    public static async delete(id: string): Promise<{ deletedId: string }[]> {
+        // if (id) db.delete(services).where(eq(services.id, id))
+        // else throw new Error('No id provided')
+        if (id) {
+            try {
+                return await db
+                    .delete(services)
+                    .where(eq(services.id, id))
+                    .returning({ deletedId: services.id })
+            } catch (error) {
+                throw new Error(`Error deleting service: ${error}`)
+            }
+        } else throw new Error('No id provided')
     }
 
     public static async getById(id: string): Promise<Service> {

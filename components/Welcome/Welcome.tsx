@@ -8,7 +8,7 @@ import classes from './Welcome.module.css'
 export function Welcome() {
     return (
         <main>
-            <Title className={classes.title} ta="center" mt={100}>
+            <Title className={classes.title} ta="center" mt={20}>
                 Welcome to{' '}
                 <Text
                     inherit
@@ -20,7 +20,7 @@ export function Welcome() {
                 </Text>
             </Title>
 
-            <Text c="dimmed" ta="center" size="lg" p="24" maw={580} mx="auto" mt="xl">
+            <Text c="dimmed" ta="center" size="lg" p="24" maw={580} mx="auto" mt="xl" pb="50">
                 where style meets precision. Step into a world of expert grooming and personalized
                 service that caters to the modern man.
             </Text>

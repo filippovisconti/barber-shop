@@ -12076,7 +12076,7 @@ __metadata:
     next: "npm:^14.1.2-canary.2"
     next-auth: "npm:^4.24.6"
     postcss: "npm:^8.4.31"
-    postcss-preset-mantine: "npm:1.13.0"
+    postcss-preset-mantine: "npm:^1.13.0"
     postcss-simple-vars: "npm:^7.0.1"
     postgres: "npm:^3.4.3"
     prettier: "npm:^3.0.3"
@@ -13624,7 +13624,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-preset-mantine@npm:1.13.0":
+"postcss-preset-mantine@npm:^1.13.0":
   version: 1.13.0
   resolution: "postcss-preset-mantine@npm:1.13.0"
   dependencies:

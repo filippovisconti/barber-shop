@@ -1,5 +1,4 @@
 import { EmailBanner } from '@/components/EmailBanner/EmailBanner'
-import { ImageActionBanner } from '@/components/ImageActionBanner/ImageActionBanner'
 import ServiceTable from '@/components/ServiceTable/ServiceTable'
 import { Box, Button, Center, Container, Group, Space, Title } from '@mantine/core'
 import Link from 'next/link'
@@ -13,17 +12,17 @@ async function getData() {
     })
     return res.json()
 }
-
+function getBaseUrl(): string {
+    if (!process.env.BASE_URL) throw new Error('BASE_URL environment variable is required.')
+    return process.env.BASE_URL
+}
 export default async function Page() {
     const data = await getData()
     const serviceNames: Service[] = JSON.parse(JSON.stringify(data)) as Service[]
     const tableAndBanner = (
         <>
             <Box miw={{ base: 200, sm: 500, md: 600 }} py="20">
-                <ServiceTable service_names={serviceNames} />
-            </Box>
-            <Box maw={300} mx="auto">
-                <ImageActionBanner />
+                <ServiceTable service_names={serviceNames} baseUrl={getBaseUrl()} />
             </Box>
         </>
     )
