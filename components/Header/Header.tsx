@@ -1,36 +1,42 @@
 'use client'
 
 import { ColorSchemeToggle } from '@/components/ColorSchemeToggle/ColorSchemeToggle'
-import { Box, Burger, Button, Divider, Drawer, Group, ScrollArea, rem } from '@mantine/core'
+import { Box, Burger, Button, Divider, Drawer, Group, Indicator, ScrollArea, Text, rem } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { MantineLogo } from '@mantinex/mantine-logo'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 
 import classes from './Header.module.css'
+import BarberLogo from '../BarberLogo/BarberLogo'
 
 export function HeaderMegaMenu() {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false)
     const { data: session } = useSession()
 
+    // <Link key="2" href="/locations" className={classes.link}>
+    // Locations
+    // </Link>,
+    // <Link key="7" href="/services" className={classes.link}>
+    // Services
+    // </Link>,
     const links = [
+        <Link key="5" href="/appointments" className={classes.link}>
+            <Text c='dimmed'
+                size="xs"
+            >
+                All appointments
+            </Text>
+        </Link>,
         <Link key="1" href="/" className={classes.link}>
             Home
-        </Link>,
-        <Link key="2" href="/locations" className={classes.link}>
-            Locations
         </Link>,
         <Link key="3" href="/contact-us" className={classes.link}>
             Contact Us
         </Link>,
-        <Link key="7" href="/services" className={classes.link}>
-            Services
-        </Link>,
         <Link key="4" href="/appointments/new" className={classes.link}>
-            Schedule Appointment
-        </Link>,
-        <Link key="5" href="/appointments" className={classes.link}>
-            All appointments
+            <Indicator processing offset={-4}>
+                Schedule Appointment
+            </Indicator>
         </Link>,
     ]
 
@@ -57,7 +63,9 @@ export function HeaderMegaMenu() {
         <Box pb={120}>
             <header className={classes.header}>
                 <Group justify="space-between" h="100%">
-                    <MantineLogo size={30} />
+                    <Link key="1" href="/" className={classes.homelink}>
+                        <BarberLogo />
+                    </Link>
                     <Group h="100%" gap={0} visibleFrom={responsiveCutOff}>
                         {links}
                     </Group>
