@@ -1,6 +1,5 @@
 import { JoinAppointment } from '@/app/db/schema'
 import AppointmentTable from '@/components/AppointmentTable/AppointmentTable'
-import { EmailBanner } from '@/components/EmailBanner/EmailBanner'
 import { Box, Container, Group, Space, Title } from '@mantine/core'
 
 async function getData(): Promise<string> {
@@ -36,7 +35,6 @@ export default async function Page() {
                 </Group>
                 <Box hiddenFrom="sm">{tableAndBanner}</Box>
                 <Space h="xl" />
-                <EmailBanner />
             </Container>
         </main>
     )
