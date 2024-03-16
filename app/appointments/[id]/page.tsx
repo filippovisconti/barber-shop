@@ -27,6 +27,7 @@ async function getLocation(id: string): Promise<string> {
 }
 
 export default async function Page({ params }: { params: { id: string } }) {
+    if (params.id === 'undefined') throw new Error('You must provide an id')
     if (!params.id) throw new Error('No id found')
     const rawAppointment: string = await getAppointment(params.id)
     if (!rawAppointment) throw new Error('No data found')

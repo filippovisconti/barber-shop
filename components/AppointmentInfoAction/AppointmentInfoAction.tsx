@@ -28,15 +28,21 @@ export function AppointmentInfoAction(props: {
                     {props.location.name}
                 </Text>
                 <Text ta="center" fz="sm">
-                    {props.service.duration} minutes
+                    Service: {props.service.name}, {props.service.duration} minutes
                 </Text>
                 <Text ta="center" fz="sm">
                     {props.service.price}€
                 </Text>
+                <Text ta="center" fz="sm">
+                    Status = {props.appointment.status}
+                </Text>
+                <Text ta="center" fz="sm">
+                    Notes: {props.appointment.notes}
+                </Text>
 
-                <Link href="#">
+                <Link href={`/appointments/update/${props.appointment.id}`}>
                     <Button variant="default" fullWidth mt="md">
-                        Edit!
+                        Edit
                     </Button>
                 </Link>
             </Paper>

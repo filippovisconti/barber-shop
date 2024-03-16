@@ -46,10 +46,28 @@ export default class AppointmentRepository {
         } else throw new Error('No appointment data provided')
     }
 
-    public static async updateById(id: string, data: Appointment): Promise<void> {
-        if (id) await db.update(appointments).set(data).where(eq(appointments.id, id))
-        else if (data.id) db.update(appointments).set(data).where(eq(appointments.id, data.id))
-        else throw new Error('No id or data.id provided')
+    public static async updateById(id: string, data: Appointment): Promise<{ id: string }[]> {
+        if (id) {
+            try {
+                return await db
+                    .update(appointments)
+                    .set(data)
+                    .where(eq(appointments.id, id))
+                    .returning({ id: appointments.id })
+            } catch (error) {
+                throw new Error(`Error updating appointment: ${error}`)
+            }
+        } else if (data.id) {
+            try {
+                return await db
+                    .update(appointments)
+                    .set(data)
+                    .where(eq(appointments.id, data.id))
+                    .returning({ id: appointments.id })
+            } catch (error) {
+                throw new Error(`Error updating appointment: ${error}`)
+            }
+        } else throw new Error('No id or data.id provided')
     }
 
     public static async delete(id: string): Promise<{ deletedId: string }[]> {

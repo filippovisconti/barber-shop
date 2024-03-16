@@ -33,7 +33,7 @@ export default function AppointmentTable(props: {
             <Table.Td>{element.status}</Table.Td>
             {/* <Table.Td>{!element.notes ? '-' : element.notes}</Table.Td> */}
             <Table.Td>
-                <Link href="#">
+                <Link href={`/appointments/update/${element.id}`}>
                     <Button
                         rightSection={<IconEdit size={14} />}
                         variant="filled"
