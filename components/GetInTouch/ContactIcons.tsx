@@ -25,16 +25,20 @@ function ContactIcon({ icon: Icon, title, description, ...others }: ContactIconP
         </div>
     )
 }
+const email = 'contact@barbershop.com'
+const phone = '+1 (555) 123-4567'
+const address = '123 Main St, New York, NY 10001'
+const hours = 'Mon – Fri: 9am – 7pm'
 
 const MOCKDATA = [
-    { title: 'Email', description: 'hello@mantine.dev', icon: IconAt },
-    { title: 'Phone', description: '+49 (800) 335 35 35', icon: IconPhone },
+    { title: 'Email', description: email, icon: IconAt },
+    { title: 'Phone', description: phone, icon: IconPhone },
     {
         title: 'Address',
-        description: '844 Morris Park avenue',
+        description: address,
         icon: IconMapPin,
     },
-    { title: 'Working hours', description: '8 a.m. – 11 p.m.', icon: IconSun },
+    { title: 'Working hours', description: hours, icon: IconSun },
 ]
 
 export function ContactIconsList() {

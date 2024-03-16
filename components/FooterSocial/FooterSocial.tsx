@@ -1,11 +1,11 @@
 'use client'
 
 import { ActionIcon, Container, Group, Text, rem } from '@mantine/core'
-import { MantineLogo } from '@mantinex/mantine-logo'
 import { IconBrandFacebook, IconBrandInstagram, IconBrandWhatsapp } from '@tabler/icons-react'
 import { useSession } from 'next-auth/react'
 
 import classes from './FooterSocial.module.css'
+import { BarberLogoFooter } from '../BarberLogo/BarberLogo'
 
 export function FooterSocial() {
     const { data: session } = useSession()
@@ -13,7 +13,7 @@ export function FooterSocial() {
     return (
         <footer className={classes.footer}>
             <Container className={classes.inner}>
-                <MantineLogo size={28} />
+                <BarberLogoFooter />
                 {session ? <Text fz="xs"> Signed in as {session.user?.email} </Text> : <></>}
 
                 <Group gap={0} className={classes.links} justify="flex-end" wrap="nowrap">

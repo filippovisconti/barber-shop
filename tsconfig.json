@@ -38,7 +38,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "/Users/filippovisconti/Developer/github/barber-shop/.next/types/**/*.ts"
+    "/Users/filippovisconti/Developer/github/barber-shop/.next/types/**/*.ts",
+    "/Users/allegrastrippoli/Projects/barber-shop/.next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

@@ -1,9 +1,36 @@
 import { eq } from 'drizzle-orm'
 
 import { db } from '../db'
-import { Appointment, NewAppointment, appointments } from '../schema'
+import {
+    Appointment,
+    JoinAppointment,
+    NewAppointment,
+    appointments,
+    locations,
+    services,
+} from '../schema'
 
 export default class AppointmentRepository {
+    public static async getAppointmentsJoin(): Promise<JoinAppointment[]> {
+        // inner join: no null values allowed
+        const result: JoinAppointment[] = await db
+            .select({
+                id: appointments.id,
+                userEmail: appointments.userEmail,
+                serviceName: services.name,
+                locationName: locations.name,
+                date: appointments.date,
+                notes: appointments.notes,
+                createdAt: appointments.createdAt,
+                status: appointments.status,
+            })
+            .from(appointments)
+            .innerJoin(services, eq(appointments.serviceId, services.id))
+            .innerJoin(locations, eq(appointments.locationId, locations.id))
+
+        return Promise.resolve(result)
+    }
+
     public static async getAll(): Promise<Appointment[]> {
         const result: Promise<Appointment[]> = db.query.appointments.findMany()
         return result
@@ -25,8 +52,16 @@ export default class AppointmentRepository {
         else throw new Error('No id or data.id provided')
     }
 
-    public static async delete(id: string): Promise<void> {
-        if (id) await db.delete(appointments).where(eq(appointments.id, id))
+    public static async delete(id: string): Promise<{ deletedId: string }[]> {
+        if (id)
+            try {
+                return await db
+                    .delete(appointments)
+                    .where(eq(appointments.id, id))
+                    .returning({ deletedId: appointments.id })
+            } catch (error) {
+                throw new Error(`Error deleting appointment: ${error}`)
+            }
         else throw new Error('No id provided')
     }
 

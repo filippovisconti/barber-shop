@@ -136,6 +136,25 @@ export type NewService = typeof services.$inferInsert // insert type
 
 export type Appointment = typeof appointments.$inferSelect // return type when queried
 export type NewAppointment = typeof appointments.$inferInsert // insert type
+export type JoinAppointment = {
+    date: Date
+    id: string
+    userEmail: string
+    serviceName: string
+    locationName: string
+    notes: string | null
+    createdAt: Date
+    status:
+        | 'completed'
+        | 'cancelled'
+        | 'pending'
+        | 'confirmed'
+        | 'rescheduled'
+        | 'no-show'
+        | 'late'
+        | 'early'
+        | null
+}
 
 export type Location = typeof locations.$inferSelect // return type when queried
 export type NewLocation = typeof locations.$inferInsert // insert type

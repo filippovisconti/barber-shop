@@ -2486,6 +2486,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mantine/carousel@npm:^7.6.2":
+  version: 7.6.2
+  resolution: "@mantine/carousel@npm:7.6.2"
+  peerDependencies:
+    "@mantine/core": 7.6.2
+    "@mantine/hooks": 7.6.2
+    embla-carousel-react: ">=7.0.0"
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  checksum: 10c0/cb3fd7f99cac4d67a6fa65ba36039f6fe88360955b4c3dedaf7e6e3b989eff7ba63a70e270e1bde077392e0c1399c30f55c753937b2113cf94c7a89efa49ed7b
+  languageName: node
+  linkType: hard
+
 "@mantine/core@npm:7.5.3":
   version: 7.5.3
   resolution: "@mantine/core@npm:7.5.3"
@@ -4401,7 +4414,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tabler/icons-react@npm:^2.40.0":
+"@tabler/icons-react@npm:^2.47.0":
   version: 2.47.0
   resolution: "@tabler/icons-react@npm:2.47.0"
   dependencies:
@@ -7982,6 +7995,33 @@ __metadata:
     minimalistic-assert: "npm:^1.0.1"
     minimalistic-crypto-utils: "npm:^1.0.1"
   checksum: 10c0/5f361270292c3b27cf0843e84526d11dec31652f03c2763c6c2b8178548175ff5eba95341dd62baff92b2265d1af076526915d8af6cc9cb7559c44a62f8ca6e2
+  languageName: node
+  linkType: hard
+
+"embla-carousel-autoplay@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "embla-carousel-autoplay@npm:7.1.0"
+  peerDependencies:
+    embla-carousel: 7.1.0
+  checksum: 10c0/27b80fceee448c6e62144d68cd474f62d388feb93f61adcb00e4a12c80595235cd0e865e3dd305eef28591bfc5ffd40181aa8fa29ce6f85bd3331fecada071bc
+  languageName: node
+  linkType: hard
+
+"embla-carousel-react@npm:^7.1.0":
+  version: 7.1.0
+  resolution: "embla-carousel-react@npm:7.1.0"
+  dependencies:
+    embla-carousel: "npm:7.1.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.1 || ^18.0.0
+  checksum: 10c0/05e33fdb1062fde0164a0685163a5212f8e8f343fbe28e9a8e2348c989d8825d80fdcecfed485c7617d27f8f5d72b393612a3dd13ef9cffc02ef0cf21109ba51
+  languageName: node
+  linkType: hard
+
+"embla-carousel@npm:7.1.0":
+  version: 7.1.0
+  resolution: "embla-carousel@npm:7.1.0"
+  checksum: 10c0/3fcfe5b287c5d09d35dac76b6612567cf6f15abdae0bbf7d10754db9f732dd90cdfdf5bc7405d8fb3f65542bdead09971e93e024a0db9b3f1fcc653a70e733bc
   languageName: node
   linkType: hard
 
@@ -12026,6 +12066,7 @@ __metadata:
   dependencies:
     "@auth/drizzle-adapter": "npm:^0.7.0"
     "@babel/core": "npm:^7.23.2"
+    "@mantine/carousel": "npm:^7.6.2"
     "@mantine/core": "npm:7.5.3"
     "@mantine/dates": "npm:^7.5.3"
     "@mantine/form": "npm:^7.5.3"
@@ -12040,7 +12081,7 @@ __metadata:
     "@storybook/blocks": "npm:^7.5.2"
     "@storybook/nextjs": "npm:^7.5.2"
     "@storybook/react": "npm:^7.5.2"
-    "@tabler/icons-react": "npm:^2.40.0"
+    "@tabler/icons-react": "npm:^2.47.0"
     "@testing-library/dom": "npm:^9.3.3"
     "@testing-library/jest-dom": "npm:^6.1.4"
     "@testing-library/react": "npm:^14.2.1"
@@ -12056,6 +12097,8 @@ __metadata:
     dotenv: "npm:^16.4.4"
     drizzle-kit: "npm:^0.20.14"
     drizzle-orm: "npm:^0.29.4"
+    embla-carousel-autoplay: "npm:^7.1.0"
+    embla-carousel-react: "npm:^7.1.0"
     eslint: "npm:^8.53.0"
     eslint-config-airbnb: "npm:19.0.4"
     eslint-config-airbnb-typescript: "npm:^17.1.0"
@@ -12071,11 +12114,12 @@ __metadata:
     eslint-plugin-testing-library: "npm:^6.1.0"
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
+    moment: "npm:^2.30.1"
     net: "npm:^1.0.2"
     next: "npm:^14.1.2-canary.2"
     next-auth: "npm:^4.24.6"
     postcss: "npm:^8.4.31"
-    postcss-preset-mantine: "npm:1.13.0"
+    postcss-preset-mantine: "npm:^1.13.0"
     postcss-simple-vars: "npm:^7.0.1"
     postgres: "npm:^3.4.3"
     prettier: "npm:^3.0.3"
@@ -12512,6 +12556,13 @@ __metadata:
   bin:
     mkdirp: bin/cmd.js
   checksum: 10c0/46ea0f3ffa8bc6a5bc0c7081ffc3907777f0ed6516888d40a518c5111f8366d97d2678911ad1a6882bf592fa9de6c784fea32e1687bb94e1f4944170af48a5cf
+  languageName: node
+  linkType: hard
+
+"moment@npm:^2.30.1":
+  version: 2.30.1
+  resolution: "moment@npm:2.30.1"
+  checksum: 10c0/865e4279418c6de666fca7786607705fd0189d8a7b7624e2e56be99290ac846f90878a6f602e34b4e0455c549b85385b1baf9966845962b313699e7cb847543a
   languageName: node
   linkType: hard
 
@@ -13616,7 +13667,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-preset-mantine@npm:1.13.0":
+"postcss-preset-mantine@npm:^1.13.0":
   version: 1.13.0
   resolution: "postcss-preset-mantine@npm:1.13.0"
   dependencies:

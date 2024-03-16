@@ -1,6 +1,6 @@
 // server component
-import WholeForm from '@/app/appointments/new/client'
 import { Location, Service } from '@/app/db/schema'
+import WholeForm from '@/components/NewAppointmentForm/client'
 import { Box, Title } from '@mantine/core'
 import { redirect } from 'next/navigation'
 
@@ -48,7 +48,6 @@ export default async function NewAppointmentForm() {
             if (response.ok) {
                 const json = await response.json()
                 const appoinment: { id: string } = JSON.parse(JSON.stringify(json))
-                console.log('Success: appointment created with id', appoinment.id)
                 redirect(`/appointments/${appoinment.id}`)
             } else {
                 throw new Error(`HTTP error! status: ${response.body}`)
