@@ -2,28 +2,32 @@ import {
     Badge,
     Button,
     Card,
+    Center,
     Container,
     Grid,
     Group,
     SimpleGrid,
-    Skeleton,
     Text,
-    rem,
+    UnstyledButton,
+    useMantineTheme,
 } from '@mantine/core'
+import { IconMap2, IconRazor } from '@tabler/icons-react'
 import Link from 'next/link'
 
-import { ActionsGrid } from '../ActionsGrid/ActionsGrid'
+import WelcomeCarousel from '../WelcomeCarousel/Carousel'
+import classes from './LeadGrid.module.css'
 
-const PRIMARY_COL_HEIGHT = rem(300)
 
+const height = 350
 export function LeadGrid() {
-    const SECONDARY_COL_HEIGHT = `calc(${PRIMARY_COL_HEIGHT} / 2 - var(--mantine-spacing-md) / 2)`
-
+    const theme = useMantineTheme()
     const hotTowelShaveUuid = '1cb819b2-d4db-4f1a-842f-cd1179383515'
     return (
         <Container my="md">
             <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
-                <ActionsGrid />
+                <Card withBorder radius="md" className={classes.card}>
+                    <WelcomeCarousel height={height} />
+                </Card>
                 <Grid gutter="md">
                     <Grid.Col>
                         <Card shadow="sm" padding="lg" radius="md" withBorder>
@@ -47,10 +51,41 @@ export function LeadGrid() {
                         </Card>{' '}
                     </Grid.Col>
                     <Grid.Col span={6}>
-                        <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} />
+                        <Card withBorder radius="md" className={classes.card}>
+                            <SimpleGrid cols={1} m="xs">
+                                <UnstyledButton key="location" className={classes.item}>
+                                    <Center>
+                                        <IconMap2 color={theme.colors['green'][6]} size="2rem" />
+                                    </Center>
+                                    <Center>
+                                        <Link href="/locations">
+                                            <Text size="xs" mt={7}>
+                                                Locations
+                                            </Text>
+                                        </Link>
+                                    </Center>
+                                </UnstyledButton>
+                            </SimpleGrid>
+                        </Card>
                     </Grid.Col>
                     <Grid.Col span={6}>
-                        <Skeleton height={SECONDARY_COL_HEIGHT} radius="md" animate={false} />
+                        <Card withBorder radius="md" className={classes.card}>
+                            <SimpleGrid cols={1} m="xs">
+                                <UnstyledButton key="services" className={classes.item}>
+                                    <Center>
+                                        <IconRazor color={theme.colors['red'][6]} size="2rem" />
+                                    </Center>
+                                    <Center>
+                                        <Link href="/services">
+                                            <Text size="xs" mt={7}>
+                                                Services
+                                            </Text>
+                                        </Link>
+                                    </Center>
+                                </UnstyledButton>
+                            </SimpleGrid>
+                        </Card>
+
                     </Grid.Col>
                 </Grid>
             </SimpleGrid>

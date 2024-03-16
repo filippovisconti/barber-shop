@@ -1,5 +1,6 @@
 import { FooterSocial } from '@/components/FooterSocial/FooterSocial'
 import { HeaderMegaMenu } from '@/components/Header/Header'
+import '@mantine/carousel/styles.css'
 import { ColorSchemeScript, MantineProvider } from '@mantine/core'
 import '@mantine/core/styles.css'
 import '@mantine/dates/styles.css'
@@ -20,7 +21,7 @@ export default function RootLayout({ children }: { children: any }) {
         <html lang="en">
             <head>
                 <ColorSchemeScript defaultColorScheme="auto" />
-                <link rel="shortcut icon" href="/favicon.svg" />
+                <link rel="shortcut icon" href="/favicon.png" />
                 <meta
                     name="viewport"
                     content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
