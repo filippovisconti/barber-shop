@@ -4,8 +4,8 @@ import { ActionIcon, Container, Group, Text, rem } from '@mantine/core'
 import { IconBrandFacebook, IconBrandInstagram, IconBrandWhatsapp } from '@tabler/icons-react'
 import { useSession } from 'next-auth/react'
 
-import classes from './FooterSocial.module.css'
 import { BarberLogoFooter } from '../BarberLogo/BarberLogo'
+import classes from './FooterSocial.module.css'
 
 export function FooterSocial() {
     const { data: session } = useSession()

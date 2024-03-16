@@ -1,13 +1,24 @@
 'use client'
 
 import { ColorSchemeToggle } from '@/components/ColorSchemeToggle/ColorSchemeToggle'
-import { Box, Burger, Button, Divider, Drawer, Group, Indicator, ScrollArea, Text, rem } from '@mantine/core'
+import {
+    Box,
+    Burger,
+    Button,
+    Divider,
+    Drawer,
+    Group,
+    Indicator,
+    ScrollArea,
+    Text,
+    rem,
+} from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 
-import classes from './Header.module.css'
 import BarberLogo from '../BarberLogo/BarberLogo'
+import classes from './Header.module.css'
 
 export function HeaderMegaMenu() {
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false)
@@ -21,9 +32,7 @@ export function HeaderMegaMenu() {
     // </Link>,
     const links = [
         <Link key="5" href="/appointments" className={classes.link}>
-            <Text c='dimmed'
-                size="xs"
-            >
+            <Text c="dimmed" size="xs">
                 All appointments
             </Text>
         </Link>,

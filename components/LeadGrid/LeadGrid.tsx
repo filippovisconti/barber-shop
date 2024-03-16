@@ -17,7 +17,6 @@ import Link from 'next/link'
 import WelcomeCarousel from '../WelcomeCarousel/Carousel'
 import classes from './LeadGrid.module.css'
 
-
 const height = 350
 export function LeadGrid() {
     const theme = useMantineTheme()
@@ -85,7 +84,6 @@ export function LeadGrid() {
                                 </UnstyledButton>
                             </SimpleGrid>
                         </Card>
-
                     </Grid.Col>
                 </Grid>
             </SimpleGrid>
