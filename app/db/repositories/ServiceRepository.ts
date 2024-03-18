@@ -19,9 +19,28 @@ export default class ServiceRepository {
         } else throw new Error('No service data provided')
     }
 
-    public static async updateById(id: string, data: Service): Promise<void> {
-        if (id) db.update(services).set(data).where(eq(services.id, id))
-        else if (data.id) db.update(services).set(data).where(eq(services.id, data.id))
+    public static async updateById(id: string, data: Service): Promise<{ id: string }[]> {
+        if (id) {
+            try {
+                return await db
+                    .update(services)
+                    .set(data)
+                    .where(eq(services.id, id))
+                    .returning({ id: services.id })
+            } catch (error) {
+                throw new Error(`Error updating service: ${error}`)
+            }
+        } else if (data.id) {
+            try {
+                return await db
+                    .update(services)
+                    .set(data)
+                    .where(eq(services.id, data.id))
+                    .returning({ id: services.id })
+            } catch (error) {
+                throw new Error(`Error updating service: ${error}`)
+            }
+        }
         else throw new Error('No id or data.id provided')
     }
 

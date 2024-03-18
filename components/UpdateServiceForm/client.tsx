@@ -1,16 +1,18 @@
 'use client'
 
+
+import { Service } from '@/app/db/schema'
 import { Box, Button, Center, NumberInput, TextInput, Textarea } from '@mantine/core'
 import { useForm } from '@mantine/form'
 
-export default function WholeForm(props: { action: (values: FormData) => void }) {
+export default function WholeForm(props: { action: (values: FormData) => void, service: Service }) {
     const form = useForm({
-        name: 'new-service-form',
+        name: 'update-service-form',
         initialValues: {
-            name: 'Test Service',
-            description: 'A description for the service',
-            price: 35,
-            duration: 20,
+            name: props.service.name,
+            description: props.service.description,
+            price: props.service.price,
+            duration: props.service.duration,
         },
 
         validate: {
@@ -26,7 +28,6 @@ export default function WholeForm(props: { action: (values: FormData) => void })
     const formItems = (
         <>
             <Box maw="400" m="auto" pt="50" pb="100">
-                Add a new service to the list!
                 <TextInput
                     label="Name"
                     name="name"

@@ -1,9 +1,9 @@
 import { StoryWrapper } from '../StoryWrapper/StoryWrapper'
-import { UserInfoAction } from './UserInfoAction'
+import { ServiceInfoAction } from './ServiceInfoAction'
 import attributes from './attributes.json'
 
-export default { title: 'UserInfoAction' }
+export default { title: 'ServiceInfoAction' }
 
 export function Usage() {
-    return <StoryWrapper attributes={attributes} component={UserInfoAction} />
+    return <StoryWrapper attributes={attributes} component={ServiceInfoAction} />
 }

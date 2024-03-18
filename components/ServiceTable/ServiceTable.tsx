@@ -12,6 +12,7 @@ async function deleteService(id: string, baseUrl: string) {
     const res = await fetch(url, { method: 'DELETE' })
     return res.json()
 }
+// TODO: only allow admin to edit and delete services
 
 export default function ServiceTable(props: { service_names: Service[]; baseUrl: string }) {
     const [opened, { open, close }] = useDisclosure(false)
@@ -27,7 +28,7 @@ export default function ServiceTable(props: { service_names: Service[]; baseUrl:
             <Table.Td>{element.price}€</Table.Td>
             <Table.Td>{element.duration}&apos; </Table.Td>
             <Table.Td>
-                <Link href="#">
+                <Link href={`/services/update/${element.id}`}>
                     <Button
                         rightSection={<IconEdit size={14} />}
                         variant="filled"
