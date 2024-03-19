@@ -2,7 +2,7 @@
 
 import { Location, Service } from '@/app/db/schema'
 import {
-    ActionIcon,
+    // ActionIcon,
     Box,
     Button,
     Center,
@@ -16,7 +16,7 @@ import {
 } from '@mantine/core'
 import { DatePickerInput, TimeInput } from '@mantine/dates'
 import { useForm } from '@mantine/form'
-import { IconClock } from '@tabler/icons-react'
+import { IconClock, IconCalendar } from '@tabler/icons-react'
 import { useSession } from 'next-auth/react'
 import { useSearchParams } from 'next/navigation'
 import { useRef } from 'react'
@@ -64,9 +64,9 @@ export default function WholeForm(props: {
     })
     const ref = useRef<HTMLInputElement>(null)
     const pickerControl = (
-        <ActionIcon variant="subtle" color="gray" onClick={() => ref.current?.showPicker()}>
-            <IconClock style={{ width: rem(16), height: rem(16) }} stroke={1.5} />
-        </ActionIcon>
+        // <ActionIcon variant="subtle" color="gray" onClick={() => ref.current?.showPicker()}>
+        <IconClock style={{ width: rem(16), height: rem(16) }} stroke={1.5} />
+        // </ActionIcon>
     )
     const formItems = (
         <>
@@ -101,6 +101,7 @@ export default function WholeForm(props: {
                     name="date"
                     py="10"
                     label="Pick a date"
+                    rightSection={<IconCalendar style={{ width: rem(16), height: rem(16) }} />}
                     {...form.getInputProps('date')}
                 />
 
